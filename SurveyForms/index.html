@@ -3,22 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Pizza Survey</title>
 </head>
     <body>
 
-        <h1 id="title">Survey Form</h1>
-        <p id="description">The intention of this form is to collect survey data.</p>
+        <h1 id="title">Pizza flavor</h1>
+        <p id="description">Battle of the most popular flavor of Pizza</p>
 
         <form action="" id="survey-form">
+
             <fieldset>
-                <label for="name">Name: <input type="text" name="email" id="name" required></label>
-                <label for="email">Email: <input type="email" name="email" id="email" required></label>
+                <label for="name" id="name-label">Name: <input type="text" name="name" id="name" required placeholder="Name"></label>
+                <label for="email" id="email-label">Email: <input type="email" name="email" id="email" required placeholder="Email"></label>
+                <label for="number" id="number-label">Number: <input type="number" name="number" id="number" min="10" max="100" required placeholder="Number"> </label>
             </fieldset>
+
+            <fieldset>
+                <label for="flavor">What kind of pizza eater are you?
+                    <select name="flavor" id="flavor">
+                        <option value="Pizza lover">Pizza lover</option>
+                        <option value="Eats pizza occasionally">Eats pizza occasionally</option>
+                    </select>
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Pizza flavors</legend>
+                <label for="pepperoni"><input type="radio" name="pizza-flavor" id="pepperoni" value="pepperoni" checked>Pepperoni</label>
+                <label for="hawaiian"><input type="radio" name="pizza-flavor" id="hawaiian" value="hawaiian">Hawaiian</label>
+                <label for="ham & cheese"><input type="radio" name="pizza-flavor" id="ham & cheese" value="ham & cheese">Ham & Cheese</label>
+                <label for="others"><input type="radio" name="pizza-flavor" id="others" value="others">Others</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>What do you consider on choosing your pizza?</legend>
+                <label for="price"><input type="checkbox" name="price" id="price" value="Food">Price</label>
+                <label for="taste"><input type="checkbox" name="taste" id="taste" value="Tent">Taste</label>
+                <label for="restaurant"><input type="checkbox" name="restaurant" id="restaurant" value="Tools">Restaurant that it caters</label>
+            </fieldset>
+
+            <fieldset>
+                <label for="comments">What makes you love that flavor?
+                    <textarea name="comments" id="comments" cols="30" rows="5" placeholder="I love this flavor because..."></textarea>
+                </label>
+            </fieldset>
+
+            <button id="submit">Submit</button>
+
         </form>
 
     </body>
 </html>
-
-
-<!-- Number 6 on freecodecamp -->
