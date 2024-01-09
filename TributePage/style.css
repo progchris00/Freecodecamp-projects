@@ -6,6 +6,8 @@ body {
   margin: 0;
   padding: 0;
   color: #1e1e1e;
+  background-color: #f9f6ef;
+  font-size: 18px;
 }
 
 header {
@@ -26,7 +28,7 @@ nav > ul {
 }
 
 #image {
-  max-width: 100%;
+  width: 100%;
 }
 
 .about-section {
@@ -41,13 +43,11 @@ nav > ul {
 }
 
 .about-description {
-  text-align: justify;
   width: 50%;
 }
 
 .legacy-section {
   display: flex;
-  text-align: justify;
   justify-content: center;
   flex-direction: column;
   align-items: center;
