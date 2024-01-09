@@ -27,23 +27,27 @@ nav > ul {
 
 .about-section {
   display: flex;
-  justify-content: space-evenly;
-  padding: 25px 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  max-width: 80%;
+  margin: 40px auto;
 }
 
 .about-description {
   text-align: justify;
-  width: 40%;
+  width: 50%;
 }
 
-#img-div {
-  width: 100%;
+.legacy-section {
+  display: flex;
+  justify-content: center;
 }
 
 #image {
   max-width: 100%;
-  display: block;
-  margin: 0 auto;
 }
 
 #tribute-link {
