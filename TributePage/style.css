@@ -7,16 +7,18 @@ body {
   padding: 0;
 }
 
-.title {
+#title {
   text-align: center;
 }
 
 #img-div {
-  margin: 0;
+  width: 100%;
 }
 
 #image {
-  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
 }
 
 #tribute-link {
