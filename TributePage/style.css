@@ -10,6 +10,10 @@ body {
 header {
   display: flex;
   justify-content: flex-end;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: black;
 }
 
 nav {
@@ -23,7 +27,7 @@ nav > ul {
 
 .about-section {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 25px 50px;
 }
 
