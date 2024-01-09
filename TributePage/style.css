@@ -7,8 +7,18 @@ body {
   padding: 0;
 }
 
-#title {
-  text-align: center;
+header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav {
+  width: 300px;
+}
+
+nav > ul {
+  display: flex;
+  justify-content: space-around;
 }
 
 #img-div {
