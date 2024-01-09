@@ -18,7 +18,18 @@ nav {
 
 nav > ul {
   display: flex;
+  justify-content: space-evenly;
+}
+
+.about-section {
+  display: flex;
   justify-content: space-around;
+  padding: 25px 50px;
+}
+
+.about-description {
+  text-align: justify;
+  width: 40%;
 }
 
 #img-div {
