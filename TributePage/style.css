@@ -25,6 +25,10 @@ nav > ul {
   justify-content: space-evenly;
 }
 
+#image {
+  max-width: 100%;
+}
+
 .about-section {
   display: flex;
   justify-content: space-between;
@@ -43,14 +47,18 @@ nav > ul {
 
 .legacy-section {
   display: flex;
+  text-align: justify;
   justify-content: center;
-}
-
-#image {
-  max-width: 100%;
+  flex-direction: column;
+  align-items: center;
 }
 
 #tribute-link {
-  display: block;
   text-align: center;
+  text-decoration: none;
+  width: 100px;
+  color: white;
+  background-color: black;
+  padding: 10px 20px;
+  border-radius: 13px;
 }
