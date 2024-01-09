@@ -11,11 +11,14 @@ body {
 }
 
 header {
+  background-color: #101010;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   width: 100%;
   top: 0;
+  height: 50px;
 }
 
 nav {
@@ -27,12 +30,25 @@ nav > ul {
   justify-content: space-evenly;
 }
 
+nav > ul > li {
+  color: #101010;
+  display: block;
+}
+
+li > a {
+  text-decoration: none;
+  color: white;
+  font-weight: 800;
+}
+
 #image {
   width: 100%;
 }
 
 h2 {
   font-weight: 800;
+  margin: 0;
+  padding-top: 60px;
 }
 
 p {
@@ -47,7 +63,7 @@ p {
 
 .content {
   max-width: 80%;
-  margin: 40px auto;
+  margin: 0 auto;
 }
 
 .about-description {
