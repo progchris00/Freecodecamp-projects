@@ -1,6 +1,7 @@
 const addEntryButton = document.getElementById("add-entry");
 const entryDropdown = document.getElementById("entry-dropdown");
 const budgetNumberInput = document.getElementById("budget");
+const clearButton = document.getElementById("clear");
 const calculateButton = document.querySelector(`button[type="submit"]`);
 
 let isError = false;
@@ -43,13 +44,15 @@ function getCaloriesFromInputs(list) {
     return calories;
 }
 
+// Test function
+// subtracted total budget calorie to the total calories of inputs 
 function calculateTotalCalories() {
-    const list = document.querySelectorAll(`.input-container input[type="number"]`)
+    const list = document.querySelectorAll(`.input-container input[type="number"]`);
     const totalCalories = getCaloriesFromInputs(list);
     alert(budgetNumberInput.value - totalCalories);
 }
 
 addEntryButton.addEventListener("click", addEntry);
 
-
+// Test button
 calculateButton.addEventListener("click", calculateTotalCalories);
