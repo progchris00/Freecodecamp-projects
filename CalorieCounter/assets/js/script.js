@@ -1,5 +1,8 @@
 const addEntryButton = document.getElementById("add-entry");
 const entryDropdown = document.getElementById("entry-dropdown");
+const budgetNumberInput = document.getElementById("budget");
+const calculateButton = document.querySelector(`button[type="submit"]`);
+
 let isError = false;
 
 function cleanInputString(str) {
@@ -40,5 +43,13 @@ function getCaloriesFromInputs(list) {
     return calories;
 }
 
+function calculateTotalCalories() {
+    const list = document.querySelectorAll(`.input-container input[type="number"]`)
+    const totalCalories = getCaloriesFromInputs(list);
+    alert(budgetNumberInput.value - totalCalories);
+}
 
 addEntryButton.addEventListener("click", addEntry);
+
+
+calculateButton.addEventListener("click", calculateTotalCalories);
