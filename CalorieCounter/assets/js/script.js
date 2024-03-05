@@ -64,16 +64,10 @@ function calculateCalories(e) {
     const consumedCalories = breakfastCalories + lunchCalories + dinnerCalories + snacksCalories;
     const remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
 
-}
-// Test function
-// subtracted total budget calorie to the total calories of inputs 
-function calculateTotalCalories() {
-    const list = document.querySelectorAll(`.input-container input[type="number"]`);
-    const totalCalories = getCaloriesFromInputs(list);
-    alert(budgetNumberInput.value - totalCalories);
+    const surplusOrDeficit = remainingCalories < 0 ? "Surplus" : "Deficit";
 }
 
 addEntryButton.addEventListener("click", addEntry);
 
-// Test button
+
 calculateButton.addEventListener("click", calculateCalories);
