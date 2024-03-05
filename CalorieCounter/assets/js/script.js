@@ -48,11 +48,11 @@ function calculateCalories(e) {
     e.preventDefault();
     isError = false;
 
-    const breakfastCalories = document.querySelectorAll("#breakfast input[type='number'");
-    const lunchCalories = document.querySelectorAll("#lunch input[type='number'");
-    const dinnerCalories = document.querySelectorAll("#dinner input[type='number'");
-    const snacksCalories = document.querySelectorAll("#snacks input[type='number'");
-    const exerciseCalories = document.querySelectorAll("#exercise input[type='number'");
+    const breakfastCalorieInputs = document.querySelectorAll("#breakfast input[type='number'");
+    const lunchCalorieInputs = document.querySelectorAll("#lunch input[type='number'");
+    const dinnerCalorieInputs = document.querySelectorAll("#dinner input[type='number'");
+    const snacksCalorieInputs = document.querySelectorAll("#snacks input[type='number'");
+    const exerciseCalorieInputs = document.querySelectorAll("#exercise input[type='number'");
 }
 // Test function
 // subtracted total budget calorie to the total calories of inputs 
