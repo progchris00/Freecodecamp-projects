@@ -1,6 +1,6 @@
 const addEntryButton = document.getElementById("add-entry");
 const entryDropdown = document.getElementById("entry-dropdown");
-const budgetNumberInput = document.getElementById("budget").value;
+const budgetNumberInput = document.getElementById("budget");
 const clearButton = document.getElementById("clear");
 const calculateButton = document.querySelector(`button[type="submit"]`);
 
@@ -59,11 +59,11 @@ function calculateCalories(e) {
     const dinnerCalories = getCaloriesFromInputs(dinnerCalorieInputs);
     const snacksCalories = getCaloriesFromInputs(snacksCalorieInputs);
     const exerciseCalories = getCaloriesFromInputs(exerciseCalorieInputs);
+    const budgetCalories = getCaloriesFromInputs([budgetNumberInput]);
 
     const consumedCalories = breakfastCalories + lunchCalories + dinnerCalories + snacksCalories;
-    const remainingCalories = budgetNumberInput - consumedCalories + exerciseCalories;
+    const remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
 
-    alert(remainingCalories);
 }
 // Test function
 // subtracted total budget calorie to the total calories of inputs 
