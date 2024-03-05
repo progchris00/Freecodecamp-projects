@@ -53,6 +53,12 @@ function calculateCalories(e) {
     const dinnerCalorieInputs = document.querySelectorAll("#dinner input[type='number'");
     const snacksCalorieInputs = document.querySelectorAll("#snacks input[type='number'");
     const exerciseCalorieInputs = document.querySelectorAll("#exercise input[type='number'");
+
+    const breakfastCalories = getCaloriesFromInputs(breakfastCalorieInputs);
+    const lunchCalories = getCaloriesFromInputs(lunchCalorieInputs);
+    const dinnerCalories = getCaloriesFromInputs(dinnerCalorieInputs);
+    const snacksCalories = getCaloriesFromInputs(snacksCalorieInputs);
+    const exerciseCalories = getCaloriesFromInputs(exerciseCalorieInputs);
 }
 // Test function
 // subtracted total budget calorie to the total calories of inputs 
