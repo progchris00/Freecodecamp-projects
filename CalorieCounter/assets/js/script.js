@@ -77,7 +77,17 @@ function calculateCalories(e) {
     output.classList.remove('hide');
 }
 
+function clearForm() {
+    const inputContainers = document.querySelectorAll(".input-container");
+
+    for (const container of inputContainers) {
+        container.innerText = '';
+    }
+
+    budgetNumberInput.value = '';
+}
+
+// Events
 addEntryButton.addEventListener("click", addEntry);
-
-
 calculateButton.addEventListener("click", calculateCalories);
+clearButton.addEventListener("click", clearForm);
