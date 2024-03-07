@@ -32,6 +32,10 @@ main {
   display: none;
 }
 
+label {
+  display: block;
+}
+
 /* Fonts */
 h1 {
   margin: 10px;
