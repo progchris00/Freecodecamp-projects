@@ -74,7 +74,7 @@ function calculateCalories(e) {
     <p>${exerciseCalories} Calories Burned</p>
     `
 
-    output.classList.remove('hide');
+    output.classList.remove("hide");
 }
 
 function clearForm() {
