@@ -35,7 +35,11 @@ function addEntry() {
         </div>
         <div class="submitted-value hide">
             <span class="name"></span>
-            <span class="current-value"></span>
+            <span class="icons hide">
+                <span class="current-value"></span>
+                <button><img src="assets/images/edit.png"></button>
+                <button><img src="assets/images/delete.png"></button>
+            </span>
         </div>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
@@ -99,6 +103,10 @@ function calculateCalories(e) {
         inputValue[index].innerText = `${numberInputs[index].value}`;
     }
 
+    const icons = document.querySelectorAll(".icons");
+    for (let index = 0; index < icons.length; index++) {
+        icons[index].classList.remove("hide");
+    }
 
     output.innerHTML = `
     <span class="${surplusOrDeficit.toLowerCase()}">${Math.abs(remainingCalories)} Calorie ${surplusOrDeficit}</span>

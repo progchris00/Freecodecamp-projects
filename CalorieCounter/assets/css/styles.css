@@ -45,6 +45,10 @@ main {
   justify-content: space-between;
 }
 
+.icons img {
+  height: 13px;
+}
+
 /* Fonts */
 h1 {
   margin: 10px;
