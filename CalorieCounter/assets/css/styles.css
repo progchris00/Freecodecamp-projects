@@ -16,11 +16,20 @@ body {
 }
 
 main {
-  background-color: #f8f5ef;
-  width: 70%;
-  max-width: 600px;
+  display: flex;
+  gap: 20px;
+}
+
+.calorie-inputs,
+.output {
+  background-color: hsla(40, 39%, 95%, 0.9);
+  width: 500px;
   padding: 20px 40px;
   border-radius: 20px;
+}
+
+.hide {
+  display: none;
 }
 
 /* Fonts */
