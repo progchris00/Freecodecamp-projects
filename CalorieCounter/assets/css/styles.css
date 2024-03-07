@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(/assets/images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+main {
+  background-color: #f8f5ef;
+  width: 70%;
+  max-width: 600px;
+  padding: 20px 40px;
+  border-radius: 20px;
+}
+
+/* Fonts */
+h1 {
+  margin: 10px;
+  text-align: center;
+}
