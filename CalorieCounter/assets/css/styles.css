@@ -40,6 +40,11 @@ main {
   margin-bottom: 5px;
 }
 
+.submitted-value {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Fonts */
 h1 {
   margin: 10px;

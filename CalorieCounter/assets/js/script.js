@@ -29,12 +29,14 @@ function addEntry() {
             <label for="${entryDropdown.value}-${entryNumber}-name">Entry ${entryNumber} Name</label>
             <input id="${entryDropdown.value}-${entryNumber}-name" type="text" placeholder="Name">
         </div>
-        <span class="submitted hide name"></span>
         <div class="label-input">
             <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
             <input id="${entryDropdown.value}-${entryNumber}-calories" type="number" placeholder="Calories" min="0">
         </div>
-        <span class="submitted hide value"></span>
+        <div class="submitted-value hide">
+            <span class="name"></span>
+            <span class="current-value"></span>
+        </div>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
 }
@@ -79,26 +81,24 @@ function calculateCalories(e) {
     const surplusOrDeficit = remainingCalories < 0 ? "Surplus" : "Deficit";
 
     const numberInputs = document.querySelectorAll(".label-input input[type=number]");
-    const inputValue = document.querySelectorAll(".value");
+    const inputValue = document.querySelectorAll(".current-value");
     const nameInputs = document.querySelectorAll(".label-input input[type=text]");
     const nameValue = document.querySelectorAll(".name");
-
+    
+    const submittedValue = document.querySelector(".submitted-value");
+    submittedValue.classList.remove("hide"); 
+    
     const labelInputs = document.querySelectorAll(".label-input");
-    const submittedInputs = document.querySelectorAll(".submitted");
 
     for (let index = 0; index < labelInputs.length; index++) {
-        // numberInputs[index].classList.add("hide");
-        // inputValue[index].classList.remove("hide");
-
-        // nameInputs[index].classList.add("hide");
-        // nameValue[index].classList.remove("hide");
-        
         labelInputs[index].classList.add("hide");
-        submittedInputs[index].classList.remove("hide");
-
-        inputValue[index].innerText = `${numberInputs[index].value}`;
-        nameValue[index].innerText = `${nameInputs[index].value}`;
     }
+    
+    for (let index = 0; index < nameValue.length; index++) {
+        nameValue[index].innerText = `${nameInputs[index].value}`;
+        inputValue[index].innerText = `${numberInputs[index].value}`;
+    }
+
 
     output.innerHTML = `
     <span class="${surplusOrDeficit.toLowerCase()}">${Math.abs(remainingCalories)} Calorie ${surplusOrDeficit}</span>
