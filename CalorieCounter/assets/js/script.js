@@ -1,8 +1,9 @@
-const addEntryButton = document.getElementById("add-entry");
-const entryDropdown = document.getElementById("entry-dropdown");
+const calculateButton = document.getElementById("calorie-counter");
+
 const budgetNumberInput = document.getElementById("budget");
+const entryDropdown = document.getElementById("entry-dropdown");
+const addEntryButton = document.getElementById("add-entry");
 const clearButton = document.getElementById("clear");
-const calculateButton = document.querySelector(`button[type="submit"]`);
 const output = document.getElementById('output');
 
 let isError = false;
@@ -92,5 +93,5 @@ function clearForm() {
 
 // Events
 addEntryButton.addEventListener("click", addEntry);
-calculateButton.addEventListener("click", calculateCalories);
+calculateButton.addEventListener("submit", calculateCalories);
 clearButton.addEventListener("click", clearForm);
