@@ -3,6 +3,7 @@ const entryDropdown = document.getElementById("entry-dropdown");
 const budgetNumberInput = document.getElementById("budget");
 const clearButton = document.getElementById("clear");
 const calculateButton = document.querySelector(`button[type="submit"]`);
+const output = document.getElementById('output');
 
 let isError = false;
 
@@ -81,13 +82,12 @@ function clearForm() {
     const inputContainers = document.querySelectorAll(".input-container");
 
     for (const container of inputContainers) {
-        container.innerText = '';
+        container.innerHTML = '';
     }
 
     budgetNumberInput.value = '';
     output.innerText = '';
     output.classList.add("hide");
-
 }
 
 // Events
