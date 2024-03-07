@@ -6,6 +6,8 @@ const addEntryButton = document.getElementById("add-entry");
 const clearButton = document.getElementById("clear");
 const output = document.getElementById('output');
 
+const labelInput = document.querySelector(".label-input");
+
 let isError = false;
 
 function cleanInputString(str) {
@@ -30,6 +32,7 @@ function addEntry() {
             <div class="label-input">
             <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
             <input id="${entryDropdown.value}-${entryNumber}-calories" type="number" placeholder="Calories" min="0">
+            <span class="value"><span>
         </div>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
@@ -73,6 +76,15 @@ function calculateCalories(e) {
     const remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
 
     const surplusOrDeficit = remainingCalories < 0 ? "Surplus" : "Deficit";
+
+    const numberInputs = document.querySelectorAll(".label-input input[type=number]")
+    const inputValue = document.querySelectorAll(".value")
+
+    for (let index = 0; index < numberInputs.length; index++) {
+        numberInputs[index].classList.add("hide");
+
+        inputValue[index].innerText = `${numberInputs[index].value}`;
+    }
 
     output.innerHTML = `
     <span class="${surplusOrDeficit.toLowerCase()}">${Math.abs(remainingCalories)} Calorie ${surplusOrDeficit}</span>
