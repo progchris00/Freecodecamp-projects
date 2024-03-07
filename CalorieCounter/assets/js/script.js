@@ -28,12 +28,12 @@ function addEntry() {
         <div class="label-input">
             <label for="${entryDropdown.value}-${entryNumber}-name">Entry ${entryNumber} Name</label>
             <input id="${entryDropdown.value}-${entryNumber}-name" type="text" placeholder="Name">
-            <span class="name"><span>
+            <span class="name hide"><span>
         </div>
             <div class="label-input">
             <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
             <input id="${entryDropdown.value}-${entryNumber}-calories" type="number" placeholder="Calories" min="0">
-            <span class="value"><span>
+            <span class="value hide"><span>
         </div>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
@@ -86,9 +86,11 @@ function calculateCalories(e) {
 
     for (let index = 0; index < numberInputs.length; index++) {
         numberInputs[index].classList.add("hide");
+        inputValue[index].classList.remove("hide");
         inputValue[index].innerText = `${numberInputs[index].value}`;
 
         nameInputs[index].classList.add("hide");
+        nameValue[index].classList.remove("hide");
         nameValue[index].innerText = `${nameInputs[index].value}`;
     }
 
