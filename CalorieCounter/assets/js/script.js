@@ -28,6 +28,7 @@ function addEntry() {
         <div class="label-input">
             <label for="${entryDropdown.value}-${entryNumber}-name">Entry ${entryNumber} Name</label>
             <input id="${entryDropdown.value}-${entryNumber}-name" type="text" placeholder="Name">
+            <span class="name"><span>
         </div>
             <div class="label-input">
             <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
@@ -77,13 +78,18 @@ function calculateCalories(e) {
 
     const surplusOrDeficit = remainingCalories < 0 ? "Surplus" : "Deficit";
 
-    const numberInputs = document.querySelectorAll(".label-input input[type=number]")
-    const inputValue = document.querySelectorAll(".value")
+    const numberInputs = document.querySelectorAll(".label-input input[type=number]");
+    const inputValue = document.querySelectorAll(".value");
+    
+    const nameInputs = document.querySelectorAll(".label-input input[type=text]");
+    const nameValue = document.querySelectorAll(".name");
 
     for (let index = 0; index < numberInputs.length; index++) {
         numberInputs[index].classList.add("hide");
-
         inputValue[index].innerText = `${numberInputs[index].value}`;
+
+        nameInputs[index].classList.add("hide");
+        nameValue[index].innerText = `${nameInputs[index].value}`;
     }
 
     output.innerHTML = `
