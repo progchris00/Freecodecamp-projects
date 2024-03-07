@@ -28,13 +28,13 @@ function addEntry() {
         <div class="label-input">
             <label for="${entryDropdown.value}-${entryNumber}-name">Entry ${entryNumber} Name</label>
             <input id="${entryDropdown.value}-${entryNumber}-name" type="text" placeholder="Name">
-            <span class="name hide"><span>
         </div>
-            <div class="label-input">
+        <span class="submitted hide name"></span>
+        <div class="label-input">
             <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
             <input id="${entryDropdown.value}-${entryNumber}-calories" type="number" placeholder="Calories" min="0">
-            <span class="value hide"><span>
         </div>
+        <span class="submitted hide value"></span>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
 }
@@ -80,17 +80,23 @@ function calculateCalories(e) {
 
     const numberInputs = document.querySelectorAll(".label-input input[type=number]");
     const inputValue = document.querySelectorAll(".value");
-    
     const nameInputs = document.querySelectorAll(".label-input input[type=text]");
     const nameValue = document.querySelectorAll(".name");
 
-    for (let index = 0; index < numberInputs.length; index++) {
-        numberInputs[index].classList.add("hide");
-        inputValue[index].classList.remove("hide");
-        inputValue[index].innerText = `${numberInputs[index].value}`;
+    const labelInputs = document.querySelectorAll(".label-input");
+    const submittedInputs = document.querySelectorAll(".submitted");
 
-        nameInputs[index].classList.add("hide");
-        nameValue[index].classList.remove("hide");
+    for (let index = 0; index < labelInputs.length; index++) {
+        // numberInputs[index].classList.add("hide");
+        // inputValue[index].classList.remove("hide");
+
+        // nameInputs[index].classList.add("hide");
+        // nameValue[index].classList.remove("hide");
+        
+        labelInputs[index].classList.add("hide");
+        submittedInputs[index].classList.remove("hide");
+
+        inputValue[index].innerText = `${numberInputs[index].value}`;
         nameValue[index].innerText = `${nameInputs[index].value}`;
     }
 
