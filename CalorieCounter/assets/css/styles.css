@@ -32,8 +32,12 @@ main {
   display: none;
 }
 
-label {
-  display: block;
+.label-input-container:not(:first-child) {
+  margin-top: 20px;
+}
+
+.label-input {
+  margin-bottom: 5px;
 }
 
 /* Fonts */
