@@ -49,6 +49,14 @@ main {
   height: 13px;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
+.submitted-value:hover > .icons > .invisible {
+  visibility: visible;
+}
+
 /* Fonts */
 h1 {
   margin: 10px;

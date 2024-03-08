@@ -37,8 +37,8 @@ function addEntry() {
             <span class="name"></span>
             <span class="icons hide">
                 <span class="current-value"></span>
-                <button><img src="assets/images/edit.png"></button>
-                <button><img src="assets/images/delete.png"></button>
+                <button class="invisible"><img src="assets/images/edit.png"></button>
+                <button class="invisible"><img src="assets/images/delete.png"></button>
             </span>
         </div>
     </div>`;
