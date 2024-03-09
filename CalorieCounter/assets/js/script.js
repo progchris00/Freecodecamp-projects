@@ -133,19 +133,16 @@ function clearForm() {
     output.classList.add("hide");
 }
 
-// Events
-addEntryButton.addEventListener("click", addEntry);
-calculateButton.addEventListener("submit", calculateCalories);
-clearButton.addEventListener("click", clearForm);
-
 function enableDelete() {
     document.querySelectorAll('.delete').forEach(deleteButton => {
         deleteButton.addEventListener('click', () => {
-            // Get the parent div of the clicked button (which is the div you want to remove)
             const divToRemove = deleteButton.closest('.submitted-value');
-            
-            // Remove the div from the DOM
             divToRemove.remove();
         });
     });
 }
+
+// Events
+addEntryButton.addEventListener("click", addEntry);
+calculateButton.addEventListener("submit", calculateCalories);
+clearButton.addEventListener("click", clearForm);
