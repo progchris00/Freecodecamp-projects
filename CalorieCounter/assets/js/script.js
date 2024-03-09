@@ -37,8 +37,8 @@ function addEntry() {
             <span class="name"></span>
             <span class="icons hide">
                 <span class="current-value"></span>
-                <button class="invisible"><img src="assets/images/edit.png"></button>
-                <button class="invisible"><img src="assets/images/delete.png"></button>
+                <button class="edit invisible"><img src="assets/images/edit.png"></button>
+                <button class="delete invisible"><img src="assets/images/delete.png"></button>
             </span>
         </div>
     </div>`;
@@ -59,6 +59,8 @@ function getCaloriesFromInputs(list) {
         }
         calories += Number(currVal);
     }
+    
+    enableDelete();
     return calories;
 }
 
@@ -135,3 +137,15 @@ function clearForm() {
 addEntryButton.addEventListener("click", addEntry);
 calculateButton.addEventListener("submit", calculateCalories);
 clearButton.addEventListener("click", clearForm);
+
+function enableDelete() {
+    document.querySelectorAll('.delete').forEach(deleteButton => {
+        deleteButton.addEventListener('click', () => {
+            // Get the parent div of the clicked button (which is the div you want to remove)
+            const divToRemove = deleteButton.closest('.submitted-value');
+            
+            // Remove the div from the DOM
+            divToRemove.remove();
+        });
+    });
+}
