@@ -43,6 +43,7 @@ function addEntry() {
         </div>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
+    editEntry();
 }
 
 function getCaloriesFromInputs(list) {
@@ -92,13 +93,12 @@ function calculateCalories(e) {
     
     const submittedValue = document.querySelector(".submitted-value");
     submittedValue.classList.remove("hide"); 
-    
-    const labelInputs = document.querySelectorAll(".label-input");
 
+    const labelInputs = document.querySelectorAll(".label-input");
     for (let index = 0; index < labelInputs.length; index++) {
-        labelInputs[index].classList.add("hide");
+        labelInputs[index].style.display = "none";
     }
-    
+
     for (let index = 0; index < nameValue.length; index++) {
         nameValue[index].innerText = `${nameInputs[index].value}`;
         inputValue[index].innerText = `${numberInputs[index].value}`;
@@ -118,7 +118,6 @@ function calculateCalories(e) {
     `
 
     output.classList.remove("hide");
-    enableEditDeleteButton();
 }
 
 function clearForm() {
