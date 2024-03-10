@@ -60,7 +60,6 @@ function getCaloriesFromInputs(list) {
         calories += Number(currVal);
     }
     
-    enableDelete();
     return calories;
 }
 
@@ -119,6 +118,7 @@ function calculateCalories(e) {
     `
 
     output.classList.remove("hide");
+    enableEditDeleteButton();
 }
 
 function clearForm() {
@@ -133,7 +133,21 @@ function clearForm() {
     output.classList.add("hide");
 }
 
-function enableDelete() {
+function enableEditDeleteButton() {
+    editEntry();
+    deleteEntry();
+}
+
+function editEntry() {
+    document.querySelectorAll('.edit').forEach(editButton => {
+        editButton.addEventListener('click', () => {
+            const inputToShow = editButton.closest('.submitted-value');
+            inputToShow.style.display = 'none';
+        });
+    });
+}
+
+function deleteEntry() {
     document.querySelectorAll('.delete').forEach(deleteButton => {
         deleteButton.addEventListener('click', () => {
             const divToRemove = deleteButton.closest('.submitted-value');
