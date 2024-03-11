@@ -144,7 +144,7 @@ function editEntry() {
             inputToShow.style.display = 'none';
             
             const parentContainer = editButton.closest('.label-input-container');
-            const inputContainers = parentContainer.querySelectorAll('.label-input');
+            const inputContainers = parentContainer.querySelectorAll('.label-input'); 
             for (let index = 0; index < inputContainers.length; index++) {
                 inputContainers[index].style.display = 'block';
             }
