@@ -33,7 +33,7 @@ function addEntry() {
             <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
             <input id="${entryDropdown.value}-${entryNumber}-calories" type="number" placeholder="Calories" min="0">
         </div>
-        <div class="submitted-value hide">
+        <div class="submitted-value">
             <span class="name"></span>
             <span class="icons hide">
                 <span class="current-value"></span>
@@ -91,8 +91,8 @@ function calculateCalories(e) {
     const nameInputs = document.querySelectorAll(".label-input input[type=text]");
     const nameValue = document.querySelectorAll(".name");
     
-    const submittedValue = document.querySelector(".submitted-value");
-    submittedValue.classList.remove("hide"); 
+    // const submittedValue = document.querySelector(".submitted-value");
+    // submittedValue.classList.remove("hide"); 
 
     const labelInputs = document.querySelectorAll(".label-input");
     for (let index = 0; index < labelInputs.length; index++) {
