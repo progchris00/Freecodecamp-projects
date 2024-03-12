@@ -34,14 +34,14 @@ function addEntry() {
             <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
             <input id="${entryDropdown.value}-${entryNumber}-calories" type="number" placeholder="Calories" min="0">
         </div>
-    </div>
-    <div class="submitted-value hide">
-        <span class="name"></span>
-        <span class="icons hide">
-            <span class="current-value"></span>
-            <button class="edit invisible"><img src="assets/images/edit.png"></button>
-            <button class="delete invisible"><img src="assets/images/delete.png"></button>
-        </span>
+        <div class="submitted-value hide">
+            <span class="name"></span>
+            <span class="icons hide">
+                <span class="current-value"></span>
+                <button class="edit invisible"><img src="assets/images/edit.png"></button>
+                <button class="delete invisible"><img src="assets/images/delete.png"></button>
+            </span>
+        </div>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
     enableEditDeleteButton();
@@ -100,9 +100,14 @@ function calculateCalories(e) {
             submittedValue[index].classList.add("flex"); 
         }
 
-        const labelInputContainers = document.querySelectorAll(".label-input-container");
-        for (let index = 0; index < labelInputContainers.length; index++) {
-            labelInputContainers[index].classList.add("hide");
+        // const labelInputContainers = document.querySelectorAll(".label-input-container");
+        // for (let index = 0; index < labelInputContainers.length; index++) {
+        //     labelInputContainers[index].classList.add("hide");
+        // }
+
+        const labelInput = document.querySelectorAll(".label-input");
+        for (let index = 0; index < labelInput.length; index++) {
+            labelInput[index].classList.add("hide");
         }
 
         for (let index = 0; index < nameValue.length; index++) {
@@ -152,11 +157,12 @@ function editEntry() {
             inputToShow.classList.remove("flex");
             inputToShow.classList.add("hide");
             isEditingContent = true;
-
-            const closestSubmittedContainer = editButton.closest('.submitted-value');
-            const closestInputContainer = closestSubmittedContainer.closest(".input-container");
-            const labelInputContainer = closestInputContainer.querySelector(".label-input-container");
-            labelInputContainer.classList.remove("hide");
+            
+            const closestLabelInputContainer = editButton.closest('.label-input-container');
+            const labelInput = closestLabelInputContainer.querySelectorAll(".label-input");
+            for (let index = 0; index < labelInput.length; index++) {
+                labelInput[index].classList.remove("hide");
+            }
         });
     });
 }
