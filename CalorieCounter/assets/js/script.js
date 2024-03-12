@@ -142,8 +142,10 @@ function editEntry() {
     document.querySelectorAll('.edit').forEach(editButton => {
         editButton.addEventListener('click', () => {
             const inputToShow = editButton.closest('.submitted-value');
+            console.log(inputToShow.classList);
             inputToShow.classList.remove("flex");
             inputToShow.classList.add("hide");
+            console.log(inputToShow.classList);
 
             const parentContainer = editButton.closest('.label-input-container');
             const inputContainers = parentContainer.querySelectorAll('.label-input'); 
