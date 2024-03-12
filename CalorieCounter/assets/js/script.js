@@ -33,7 +33,7 @@ function addEntry() {
             <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
             <input id="${entryDropdown.value}-${entryNumber}-calories" type="number" placeholder="Calories" min="0">
         </div>
-        <div class="submitted-value">
+        <div class="submitted-value hide">
             <span class="name"></span>
             <span class="icons hide">
                 <span class="current-value"></span>
@@ -91,12 +91,13 @@ function calculateCalories(e) {
     const nameInputs = document.querySelectorAll(".label-input input[type=text]");
     const nameValue = document.querySelectorAll(".name");
     
-    // const submittedValue = document.querySelector(".submitted-value");
-    // submittedValue.classList.remove("hide"); 
+    const submittedValue = document.querySelector(".submitted-value");
+    submittedValue.classList.remove("hide"); 
+    submittedValue.classList.add("flex"); 
 
     const labelInputs = document.querySelectorAll(".label-input");
     for (let index = 0; index < labelInputs.length; index++) {
-        labelInputs[index].style.display = "none";
+        labelInputs[index].classList.add("hide");
     }
 
     for (let index = 0; index < nameValue.length; index++) {
@@ -141,12 +142,13 @@ function editEntry() {
     document.querySelectorAll('.edit').forEach(editButton => {
         editButton.addEventListener('click', () => {
             const inputToShow = editButton.closest('.submitted-value');
-            inputToShow.style.display = 'none';
-            
+            inputToShow.classList.remove("flex");
+            inputToShow.classList.add("hide");
+
             const parentContainer = editButton.closest('.label-input-container');
             const inputContainers = parentContainer.querySelectorAll('.label-input'); 
             for (let index = 0; index < inputContainers.length; index++) {
-                inputContainers[index].style.display = 'block';
+                inputContainers[index].classList.remove("hide");
             }
         });
     });

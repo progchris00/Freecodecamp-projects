@@ -40,7 +40,7 @@ main {
   margin-bottom: 5px;
 }
 
-.submitted-value {
+.flex {
   display: flex;
   justify-content: space-between;
 }
