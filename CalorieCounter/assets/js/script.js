@@ -43,7 +43,7 @@ function addEntry() {
         </span>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
-    editEntry();
+    enableEditDeleteButton();
 }
 
 function getCaloriesFromInputs(list) {
