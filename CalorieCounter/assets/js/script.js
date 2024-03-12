@@ -9,6 +9,7 @@ const output = document.getElementById('output');
 const labelInput = document.querySelector(".label-input");
 
 let isError = false;
+let isEditingContent = false;
 
 function cleanInputString(str) {
     const regex = /[+-\s]/g;
@@ -91,25 +92,28 @@ function calculateCalories(e) {
     const nameInputs = document.querySelectorAll(".label-input input[type=text]");
     const nameValue = document.querySelectorAll(".name");
     
-    const submittedValue = document.querySelectorAll(".submitted-value");
-    for (let index = 0; index < submittedValue.length; index++) {
-        submittedValue[index].classList.remove("hide"); 
-        submittedValue[index].classList.add("flex"); 
-    }
+    if (isEditingContent === false) {
 
-    const labelInputContainers = document.querySelectorAll(".label-input-container");
-    for (let index = 0; index < labelInputContainers.length; index++) {
-        labelInputContainers[index].classList.add("hide");
-    }
+        const submittedValue = document.querySelectorAll(".submitted-value");
+        for (let index = 0; index < submittedValue.length; index++) {
+            submittedValue[index].classList.remove("hide"); 
+            submittedValue[index].classList.add("flex"); 
+        }
 
-    for (let index = 0; index < nameValue.length; index++) {
-        nameValue[index].innerText = `${nameInputs[index].value}`;
-        inputValue[index].innerText = `${numberInputs[index].value}`;
-    }
+        const labelInputContainers = document.querySelectorAll(".label-input-container");
+        for (let index = 0; index < labelInputContainers.length; index++) {
+            labelInputContainers[index].classList.add("hide");
+        }
 
-    const icons = document.querySelectorAll(".icons");
-    for (let index = 0; index < icons.length; index++) {
-        icons[index].classList.remove("hide");
+        for (let index = 0; index < nameValue.length; index++) {
+            nameValue[index].innerText = `${nameInputs[index].value}`;
+            inputValue[index].innerText = `${numberInputs[index].value}`;
+        }
+
+        const icons = document.querySelectorAll(".icons");
+        for (let index = 0; index < icons.length; index++) {
+            icons[index].classList.remove("hide");
+        }
     }
 
     output.innerHTML = `
@@ -120,6 +124,8 @@ function calculateCalories(e) {
     <p>${exerciseCalories} Calories Burned</p>
     `
     output.classList.remove("hide");
+
+    isEditingContent = false;
 }
 
 function clearForm() {
@@ -143,10 +149,9 @@ function editEntry() {
     document.querySelectorAll('.edit').forEach(editButton => {
         editButton.addEventListener('click', () => {
             const inputToShow = editButton.closest('.submitted-value');
-            console.log(inputToShow.classList);
             inputToShow.classList.remove("flex");
             inputToShow.classList.add("hide");
-            console.log(inputToShow.classList);
+            isEditingContent = true;
 
             const closestSubmittedContainer = editButton.closest('.submitted-value');
             const closestInputContainer = closestSubmittedContainer.closest(".input-container");
