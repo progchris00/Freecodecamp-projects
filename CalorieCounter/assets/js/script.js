@@ -33,14 +33,14 @@ function addEntry() {
             <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
             <input id="${entryDropdown.value}-${entryNumber}-calories" type="number" placeholder="Calories" min="0">
         </div>
-        <div class="submitted-value hide">
-            <span class="name"></span>
-            <span class="icons hide">
-                <span class="current-value"></span>
-                <button class="edit invisible"><img src="assets/images/edit.png"></button>
-                <button class="delete invisible"><img src="assets/images/delete.png"></button>
-            </span>
-        </div>
+    </div>
+    <div class="submitted-value hide">
+        <span class="name"></span>
+        <span class="icons hide">
+            <span class="current-value"></span>
+            <button class="edit invisible"><img src="assets/images/edit.png"></button>
+            <button class="delete invisible"><img src="assets/images/delete.png"></button>
+        </span>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
     editEntry();
@@ -91,13 +91,15 @@ function calculateCalories(e) {
     const nameInputs = document.querySelectorAll(".label-input input[type=text]");
     const nameValue = document.querySelectorAll(".name");
     
-    const submittedValue = document.querySelector(".submitted-value");
-    submittedValue.classList.remove("hide"); 
-    submittedValue.classList.add("flex"); 
+    const submittedValue = document.querySelectorAll(".submitted-value");
+    for (let index = 0; index < submittedValue.length; index++) {
+        submittedValue[index].classList.remove("hide"); 
+        submittedValue[index].classList.add("flex"); 
+    }
 
-    const labelInputs = document.querySelectorAll(".label-input");
-    for (let index = 0; index < labelInputs.length; index++) {
-        labelInputs[index].classList.add("hide");
+    const labelInputContainers = document.querySelectorAll(".label-input-container");
+    for (let index = 0; index < labelInputContainers.length; index++) {
+        labelInputContainers[index].classList.add("hide");
     }
 
     for (let index = 0; index < nameValue.length; index++) {
@@ -117,7 +119,6 @@ function calculateCalories(e) {
     <p>${consumedCalories} Calories Consumed</p>
     <p>${exerciseCalories} Calories Burned</p>
     `
-
     output.classList.remove("hide");
 }
 
@@ -147,11 +148,10 @@ function editEntry() {
             inputToShow.classList.add("hide");
             console.log(inputToShow.classList);
 
-            const parentContainer = editButton.closest('.label-input-container');
-            const inputContainers = parentContainer.querySelectorAll('.label-input'); 
-            for (let index = 0; index < inputContainers.length; index++) {
-                inputContainers[index].classList.remove("hide");
-            }
+            const closestSubmittedContainer = editButton.closest('.submitted-value');
+            const closestInputContainer = closestSubmittedContainer.closest(".input-container");
+            const labelInputContainer = closestInputContainer.querySelector(".label-input-container");
+            labelInputContainer.classList.remove("hide");
         });
     });
 }
