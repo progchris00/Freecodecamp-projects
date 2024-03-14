@@ -10,6 +10,9 @@ const labelInput = document.querySelector(".label-input");
 
 let isError = false;
 
+// This will count the number of entries. Hide output if it is equals to 0
+let entryCount = 0;
+
 function cleanInputString(str) {
     const regex = /[+-\s]/g;
     return str.replace(regex, '');
@@ -44,6 +47,8 @@ function addEntry() {
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
     enableEditDeleteButton();
+
+    entryCount += 1;
 }
 
 function getCaloriesFromInputs(list) {
@@ -161,6 +166,11 @@ function deleteEntry() {
         deleteButton.addEventListener('click', () => {
             const divToRemove = deleteButton.closest('.submitted-value');
             divToRemove.remove();
+            entryCount -= 1;
+            console.log(`Entry deleted: count ${entryCount}`)
+            if (entryCount === 0 ) {
+                output.classList.add("hide");
+            }
         });
     });
 }
