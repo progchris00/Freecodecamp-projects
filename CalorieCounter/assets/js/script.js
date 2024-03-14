@@ -8,6 +8,8 @@ const output = document.getElementById('output');
 
 const labelInput = document.querySelector(".label-input");
 
+let deleteButtons = [];
+
 let isError = false;
 
 // This will count the number of entries. Hide output if it is equals to 0
@@ -46,7 +48,9 @@ function addEntry() {
         </div>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
-    enableEditDeleteButton();
+    // enableEditDeleteButton();
+
+    queryButtons();
 
     entryCount += 1;
     console.log(`an entry was added ${entryCount}`);
@@ -140,6 +144,10 @@ function clearForm() {
     output.classList.add("hide");
 }
 
+function queryButtons() {
+    deleteButtons = document.querySelectorAll('.delete');
+}
+
 function enableEditDeleteButton() {
     editEntry();
     deleteEntry();
@@ -163,17 +171,15 @@ function editEntry() {
 }
 
 function deleteEntry() {
-    document.querySelectorAll('.delete').forEach(deleteButton => {
+    deleteButtons.forEach(deleteButton => {
         deleteButton.addEventListener('click', () => {
 
-            // Remove label-input-container instead of the submitted-value
-            // Removing label-input-container will also remove the label type number
-            // so the the entryNumber will reset.
+        // Remove label-input-container instead of the submitted-value
+        // Removing label-input-container will also remove the label type number
+        // so the the entryNumber will reset.
 
             const divToRemove = deleteButton.closest('.label-input-container');
             divToRemove.remove();
-
-            // bug: entry count got subtracted based on the number of preceding entryies 
 
             entryCount -= 1;
 
@@ -181,7 +187,7 @@ function deleteEntry() {
             if (entryCount === 0 ) {
                 output.classList.add("hide");
             }
-        });
+        })
     });
 }
 
@@ -189,3 +195,10 @@ function deleteEntry() {
 addEntryButton.addEventListener("click", addEntry);
 calculateButton.addEventListener("submit", calculateCalories);
 clearButton.addEventListener("click", clearForm);
+
+
+// bug description: every time `addEntry` is called, the function `deleteEntry` adds event 
+// listener on the delete button. If you clicked 3 add entry, when the delete button is clicked
+// it will also be triggered 3 times.
+// The solution is to query the button every time an entry is added. Then remove the event from the 
+// previous ones and add new to all.
