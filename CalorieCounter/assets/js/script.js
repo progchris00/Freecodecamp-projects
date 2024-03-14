@@ -9,7 +9,6 @@ const output = document.getElementById('output');
 const labelInput = document.querySelector(".label-input");
 
 let isError = false;
-let isEditingContent = false;
 
 function cleanInputString(str) {
     const regex = /[+-\s]/g;
@@ -91,35 +90,27 @@ function calculateCalories(e) {
     const inputValue = document.querySelectorAll(".current-value");
     const nameInputs = document.querySelectorAll(".label-input input[type=text]");
     const nameValue = document.querySelectorAll(".name");
-    
-    // if (isEditingContent === false) {
 
-        const submittedValue = document.querySelectorAll(".submitted-value");
-        for (let index = 0; index < submittedValue.length; index++) {
-            submittedValue[index].classList.remove("hide"); 
-            submittedValue[index].classList.add("flex"); 
-        }
+    const submittedValue = document.querySelectorAll(".submitted-value");
+    for (let index = 0; index < submittedValue.length; index++) {
+        submittedValue[index].classList.remove("hide"); 
+        submittedValue[index].classList.add("flex"); 
+    }
 
-        // const labelInputContainers = document.querySelectorAll(".label-input-container");
-        // for (let index = 0; index < labelInputContainers.length; index++) {
-        //     labelInputContainers[index].classList.add("hide");
-        // }
+    const labelInput = document.querySelectorAll(".label-input");
+    for (let index = 0; index < labelInput.length; index++) {
+        labelInput[index].classList.add("hide");
+    }
 
-        const labelInput = document.querySelectorAll(".label-input");
-        for (let index = 0; index < labelInput.length; index++) {
-            labelInput[index].classList.add("hide");
-        }
+    for (let index = 0; index < nameValue.length; index++) {
+        nameValue[index].innerText = `${nameInputs[index].value}`;
+        inputValue[index].innerText = `${numberInputs[index].value}`;
+    }
 
-        for (let index = 0; index < nameValue.length; index++) {
-            nameValue[index].innerText = `${nameInputs[index].value}`;
-            inputValue[index].innerText = `${numberInputs[index].value}`;
-        }
-
-        const icons = document.querySelectorAll(".icons");
-        for (let index = 0; index < icons.length; index++) {
-            icons[index].classList.remove("hide");
-        }
-    // }
+    const icons = document.querySelectorAll(".icons");
+    for (let index = 0; index < icons.length; index++) {
+        icons[index].classList.remove("hide");
+    }
 
     output.innerHTML = `
     <span class="${surplusOrDeficit.toLowerCase()}">${Math.abs(remainingCalories)} Calorie ${surplusOrDeficit}</span>
@@ -129,8 +120,6 @@ function calculateCalories(e) {
     <p>${exerciseCalories} Calories Burned</p>
     `
     output.classList.remove("hide");
-
-    isEditingContent = false;
 }
 
 function clearForm() {
