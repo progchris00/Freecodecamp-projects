@@ -164,10 +164,15 @@ function editEntry() {
 function deleteEntry() {
     document.querySelectorAll('.delete').forEach(deleteButton => {
         deleteButton.addEventListener('click', () => {
-            const divToRemove = deleteButton.closest('.submitted-value');
+
+            // Remove label-input-container instead of the submitted-value
+            // Removing label-input-container will also remove the label type number
+            // so the the entryNumber will reset.
+
+            const divToRemove = deleteButton.closest('.label-input-container');
             divToRemove.remove();
             entryCount -= 1;
-            console.log(`Entry deleted: count ${entryCount}`)
+
             if (entryCount === 0 ) {
                 output.classList.add("hide");
             }
@@ -179,3 +184,6 @@ function deleteEntry() {
 addEntryButton.addEventListener("click", addEntry);
 calculateButton.addEventListener("submit", calculateCalories);
 clearButton.addEventListener("click", clearForm);
+
+
+// bug: output got hidden when delete the first entry
