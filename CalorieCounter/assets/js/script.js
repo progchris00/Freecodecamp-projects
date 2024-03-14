@@ -38,8 +38,8 @@ function addEntry() {
             <span class="name"></span>
             <span class="icons hide">
                 <span class="current-value"></span>
-                <button class="edit invisible"><img src="assets/images/edit.png"></button>
-                <button class="delete invisible"><img src="assets/images/delete.png"></button>
+                <button type="button" class="edit invisible"><img src="assets/images/edit.png"></button>
+                <button type="button" class="delete invisible"><img src="assets/images/delete.png"></button>
             </span>
         </div>
     </div>`;
@@ -92,7 +92,7 @@ function calculateCalories(e) {
     const nameInputs = document.querySelectorAll(".label-input input[type=text]");
     const nameValue = document.querySelectorAll(".name");
     
-    if (isEditingContent === false) {
+    // if (isEditingContent === false) {
 
         const submittedValue = document.querySelectorAll(".submitted-value");
         for (let index = 0; index < submittedValue.length; index++) {
@@ -119,7 +119,7 @@ function calculateCalories(e) {
         for (let index = 0; index < icons.length; index++) {
             icons[index].classList.remove("hide");
         }
-    }
+    // }
 
     output.innerHTML = `
     <span class="${surplusOrDeficit.toLowerCase()}">${Math.abs(remainingCalories)} Calorie ${surplusOrDeficit}</span>
