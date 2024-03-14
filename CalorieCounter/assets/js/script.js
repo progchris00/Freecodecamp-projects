@@ -49,6 +49,7 @@ function addEntry() {
     enableEditDeleteButton();
 
     entryCount += 1;
+    console.log(`an entry was added ${entryCount}`);
 }
 
 function getCaloriesFromInputs(list) {
@@ -171,8 +172,12 @@ function deleteEntry() {
 
             const divToRemove = deleteButton.closest('.label-input-container');
             divToRemove.remove();
+
+            // bug: entry count got subtracted based on the number of preceding entryies 
+
             entryCount -= 1;
 
+            console.log(`an entry was deleted ${entryCount}`);
             if (entryCount === 0 ) {
                 output.classList.add("hide");
             }
@@ -184,6 +189,3 @@ function deleteEntry() {
 addEntryButton.addEventListener("click", addEntry);
 calculateButton.addEventListener("submit", calculateCalories);
 clearButton.addEventListener("click", clearForm);
-
-
-// bug: output got hidden when delete the first entry
