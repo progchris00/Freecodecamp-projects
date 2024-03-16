@@ -48,9 +48,11 @@ function addEntry() {
         </div>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
-    // enableEditDeleteButton();
 
-    queryButtons();
+    enableEditDeleteButton();
+
+    // This function is suppose to fix the bug on event listener on delete buttons
+    // queryButtons();
 
     entryCount += 1;
     console.log(`an entry was added ${entryCount}`);
@@ -123,10 +125,10 @@ function calculateCalories(e) {
     }
 
     output.innerHTML = `
-    <span class="${surplusOrDeficit.toLowerCase()}">${Math.abs(remainingCalories)} Calorie ${surplusOrDeficit}</span>
+    <span id="output-calorie" class="${surplusOrDeficit.toLowerCase()}">${Math.abs(remainingCalories)} Calorie ${surplusOrDeficit}</span>
     <hr>
     <p>${budgetCalories} Calories Budgeted</p>
-    <p>${consumedCalories} Calories Consumed</p>
+    <p id="consumed">${consumedCalories} Calories Consumed</p>
     <p>${exerciseCalories} Calories Burned</p>
     `
     output.classList.remove("hide");
@@ -171,7 +173,10 @@ function editEntry() {
 }
 
 function deleteEntry() {
-    deleteButtons.forEach(deleteButton => {
+    const output = document.querySelector("#output");
+    let outputCalorie = output.querySelector("#output-calorie"); 
+
+    document.querySelectorAll(".delete").forEach(deleteButton => {
         deleteButton.addEventListener('click', () => {
 
         // Remove label-input-container instead of the submitted-value
@@ -179,6 +184,11 @@ function deleteEntry() {
         // so the the entryNumber will reset.
 
             const divToRemove = deleteButton.closest('.label-input-container');
+            const parentElement = deleteButton.closest('.icons');
+            const currentValue = parentElement.querySelector(".current-value");
+
+            outputCalorie += currentValue;
+            
             divToRemove.remove();
 
             entryCount -= 1;
