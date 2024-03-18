@@ -8,7 +8,6 @@ const output = document.getElementById('output');
 
 const labelInput = document.querySelector(".label-input");
 let remainingCalories;
-let outputCalorie;
 
 let deleteButtons = [];
 
@@ -176,20 +175,21 @@ function editEntry() {
 
 function deleteEntry() {
     const outputDiv = document.querySelector("#output");
-    outputCalorie = outputDiv.querySelector("#output-calorie"); 
 
     document.querySelectorAll(".delete").forEach(deleteButton => {
         deleteButton.addEventListener('click', () => {
-
-        // Remove label-input-container instead of the submitted-value
-        // Removing label-input-container will also remove the label type number
-        // so the the entryNumber will reset.
-
+            
+            // Remove label-input-container instead of the submitted-value
+            // Removing label-input-container will also remove the label type number
+            // so the the entryNumber will reset.
+            
             const divToRemove = deleteButton.closest('.label-input-container');
             const parentElement = deleteButton.closest('.icons');
-            const currentValue = parentElement.querySelector(".current-value").value;
+            const currentValue = parentElement.querySelector(".current-value").innerText;
+            const outputCalorie = document.querySelector("#output-calorie"); 
             
-            outputCalorie.innerText = `${remainingCalories + currentValue} Calorie Deficit`
+            remainingCalories += Number(currentValue);
+            outputCalorie.innerText = `${remainingCalories} Calorie Deficit`
 
             divToRemove.remove();
 
