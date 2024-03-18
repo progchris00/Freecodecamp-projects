@@ -7,6 +7,8 @@ const clearButton = document.getElementById("clear");
 const output = document.getElementById('output');
 
 const labelInput = document.querySelector(".label-input");
+let remainingCalories;
+let outputCalorie;
 
 let deleteButtons = [];
 
@@ -94,7 +96,7 @@ function calculateCalories(e) {
     const budgetCalories = getCaloriesFromInputs([budgetNumberInput]);
 
     const consumedCalories = breakfastCalories + lunchCalories + dinnerCalories + snacksCalories;
-    const remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
+    remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
 
     const surplusOrDeficit = remainingCalories < 0 ? "Surplus" : "Deficit";
 
@@ -173,8 +175,8 @@ function editEntry() {
 }
 
 function deleteEntry() {
-    const output = document.querySelector("#output");
-    let outputCalorie = output.querySelector("#output-calorie"); 
+    const outputDiv = document.querySelector("#output");
+    outputCalorie = outputDiv.querySelector("#output-calorie"); 
 
     document.querySelectorAll(".delete").forEach(deleteButton => {
         deleteButton.addEventListener('click', () => {
@@ -185,10 +187,10 @@ function deleteEntry() {
 
             const divToRemove = deleteButton.closest('.label-input-container');
             const parentElement = deleteButton.closest('.icons');
-            const currentValue = parentElement.querySelector(".current-value");
-
-            outputCalorie += currentValue;
+            const currentValue = parentElement.querySelector(".current-value").value;
             
+            outputCalorie.innerText = `${remainingCalories + currentValue} Calorie Deficit`
+
             divToRemove.remove();
 
             entryCount -= 1;
