@@ -43,16 +43,11 @@ function addEntry() {
             <span class="icons hide">
                 <span class="current-value"></span>
                 <button type="button" class="edit invisible"><img src="assets/images/edit.png"></button>
-                <button type="button" class="delete invisible"><img src="assets/images/delete.png"></button>
+                <button type="button" class="delete invisible" onclick="deleteThisEntry(this)"><img src="assets/images/delete.png"></button>
             </span>
         </div>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
-
-    // Add the event listener the moment the delete button is created
-    const deleteButton = document.querySelector(".delete");
-    console.log(deleteButton)
-    deleteButton.addEventListener("click", deleteThisEntry);
 
     entryCount += 1;
     console.log(`an entry was added ${entryCount}`);
@@ -172,42 +167,27 @@ function editEntry() {
     });
 }
 
-function deleteEntry() {
+function deleteThisEntry(button) {
     const outputDiv = document.querySelector("#output");
+    const divToRemove = button.closest('.label-input-container');
+    const parentElement = button.closest('.icons');
+    const currentValue = parentElement.querySelector(".current-value").innerText;
+    const outputCalorie = outputDiv.querySelector("#output-calorie"); 
+    const consumed = output.querySelector("#consumed");
+    
+    remainingCalories += Number(currentValue);
+    consumedCalories -= Number(currentValue);
 
-    document.querySelectorAll(".delete").forEach(deleteButton => {
-        deleteButton.addEventListener('click', () => {
-            
-            // Remove label-input-container instead of the submitted-value
-            // Removing label-input-container will also remove the label type number
-            // so the the entryNumber will reset.
-            
-            const divToRemove = deleteButton.closest('.label-input-container');
-            const parentElement = deleteButton.closest('.icons');
-            const currentValue = parentElement.querySelector(".current-value").innerText;
-            const outputCalorie = outputDiv.querySelector("#output-calorie"); 
-            const consumed = output.querySelector("#consumed");
-            
-            remainingCalories += Number(currentValue);
-            consumedCalories -= Number(currentValue);
+    consumed.innerText = `${consumedCalories} Calories Consumed`
+    outputCalorie.innerText = `${remainingCalories} Calorie Deficit`
 
-            consumed.innerText = `${consumedCalories} Calories Consumed`
-            outputCalorie.innerText = `${remainingCalories} Calorie Deficit`
+    divToRemove.remove();
 
-            divToRemove.remove();
+    entryCount -= 1;
 
-            entryCount -= 1;
-
-            console.log(`an entry was deleted ${entryCount}`);
-            if (entryCount === 0 ) {
-                output.classList.add("hide");
-            }
-        })
-    });
-}
-
-function deleteThisEntry() {
- console.log("working");
+    if (entryCount === 0 ) {
+        output.classList.add("hide");
+    }
 }
 
 // Events
