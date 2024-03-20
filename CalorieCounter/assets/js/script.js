@@ -10,8 +10,6 @@ const labelInput = document.querySelector(".label-input");
 let remainingCalories;
 let consumedCalories;
 
-let deleteButtons = [];
-
 let isError = false;
 
 // This will count the number of entries. Hide output if it is equals to 0
@@ -51,10 +49,10 @@ function addEntry() {
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
 
-    enableEditDeleteButton();
-
-    // This function is suppose to fix the bug on event listener on delete buttons
-    // queryButtons();
+    // Add the event listener the moment the delete button is created
+    const deleteButton = document.querySelector(".delete");
+    console.log(deleteButton)
+    deleteButton.addEventListener("click", deleteThisEntry);
 
     entryCount += 1;
     console.log(`an entry was added ${entryCount}`);
@@ -206,6 +204,10 @@ function deleteEntry() {
             }
         })
     });
+}
+
+function deleteThisEntry() {
+ console.log("working");
 }
 
 // Events
