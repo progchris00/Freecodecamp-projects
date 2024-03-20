@@ -48,9 +48,6 @@ function addEntry() {
         </div>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
-
-    entryCount += 1;
-    console.log(`an entry was added ${entryCount}`);
 }
 
 function getCaloriesFromInputs(list) {
@@ -145,8 +142,7 @@ function editEntry(button) {
     const inputToShow = button.closest('.submitted-value');
     inputToShow.classList.remove("flex");
     inputToShow.classList.add("hide");
-    isEditingContent = true;
-    
+
     const closestLabelInputContainer = button.closest('.label-input-container');
     const labelInput = closestLabelInputContainer.querySelectorAll(".label-input");
     for (let index = 0; index < labelInput.length; index++) {
