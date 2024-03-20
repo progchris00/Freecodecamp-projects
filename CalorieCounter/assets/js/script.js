@@ -8,8 +8,7 @@ const output = document.getElementById('output');
 
 const labelInput = document.querySelector(".label-input");
 let remainingCalories;
-
-let deleteButtons = [];
+let consumedCalories;
 
 let isError = false;
 
@@ -43,17 +42,12 @@ function addEntry() {
             <span class="name"></span>
             <span class="icons hide">
                 <span class="current-value"></span>
-                <button type="button" class="edit invisible"><img src="assets/images/edit.png"></button>
-                <button type="button" class="delete invisible"><img src="assets/images/delete.png"></button>
+                <button type="button" class="edit invisible" onclick="editEntry(this)"><img src="assets/images/edit.png"></button>
+                <button type="button" class="delete invisible" onclick="deleteThisEntry(this)"><img src="assets/images/delete.png"></button>
             </span>
         </div>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
-
-    enableEditDeleteButton();
-
-    // This function is suppose to fix the bug on event listener on delete buttons
-    // queryButtons();
 
     entryCount += 1;
     console.log(`an entry was added ${entryCount}`);
@@ -94,7 +88,7 @@ function calculateCalories(e) {
     const exerciseCalories = getCaloriesFromInputs(exerciseCalorieInputs);
     const budgetCalories = getCaloriesFromInputs([budgetNumberInput]);
 
-    const consumedCalories = breakfastCalories + lunchCalories + dinnerCalories + snacksCalories;
+    consumedCalories = breakfastCalories + lunchCalories + dinnerCalories + snacksCalories;
     remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
 
     const surplusOrDeficit = remainingCalories < 0 ? "Surplus" : "Deficit";
@@ -147,70 +141,43 @@ function clearForm() {
     output.classList.add("hide");
 }
 
-function queryButtons() {
-    deleteButtons = document.querySelectorAll('.delete');
+function editEntry(button) {
+    const inputToShow = button.closest('.submitted-value');
+    inputToShow.classList.remove("flex");
+    inputToShow.classList.add("hide");
+    isEditingContent = true;
+    
+    const closestLabelInputContainer = button.closest('.label-input-container');
+    const labelInput = closestLabelInputContainer.querySelectorAll(".label-input");
+    for (let index = 0; index < labelInput.length; index++) {
+        labelInput[index].classList.remove("hide");
+    }
 }
 
-function enableEditDeleteButton() {
-    editEntry();
-    deleteEntry();
-}
-
-function editEntry() {
-    document.querySelectorAll('.edit').forEach(editButton => {
-        editButton.addEventListener('click', () => {
-            const inputToShow = editButton.closest('.submitted-value');
-            inputToShow.classList.remove("flex");
-            inputToShow.classList.add("hide");
-            isEditingContent = true;
-            
-            const closestLabelInputContainer = editButton.closest('.label-input-container');
-            const labelInput = closestLabelInputContainer.querySelectorAll(".label-input");
-            for (let index = 0; index < labelInput.length; index++) {
-                labelInput[index].classList.remove("hide");
-            }
-        });
-    });
-}
-
-function deleteEntry() {
+function deleteThisEntry(button) {
     const outputDiv = document.querySelector("#output");
+    const divToRemove = button.closest('.label-input-container');
+    const parentElement = button.closest('.icons');
+    const currentValue = parentElement.querySelector(".current-value").innerText;
+    const outputCalorie = outputDiv.querySelector("#output-calorie"); 
+    const consumed = output.querySelector("#consumed");
+    
+    remainingCalories += Number(currentValue);
+    consumedCalories -= Number(currentValue);
 
-    document.querySelectorAll(".delete").forEach(deleteButton => {
-        deleteButton.addEventListener('click', () => {
-            
-            // Remove label-input-container instead of the submitted-value
-            // Removing label-input-container will also remove the label type number
-            // so the the entryNumber will reset.
-            
-            const divToRemove = deleteButton.closest('.label-input-container');
-            const parentElement = deleteButton.closest('.icons');
-            const currentValue = parentElement.querySelector(".current-value").innerText;
-            const outputCalorie = document.querySelector("#output-calorie"); 
-            
-            remainingCalories += Number(currentValue);
-            outputCalorie.innerText = `${remainingCalories} Calorie Deficit`
+    consumed.innerText = `${consumedCalories} Calories Consumed`
+    outputCalorie.innerText = `${remainingCalories} Calorie Deficit`
 
-            divToRemove.remove();
+    divToRemove.remove();
 
-            entryCount -= 1;
+    entryCount -= 1;
 
-            console.log(`an entry was deleted ${entryCount}`);
-            if (entryCount === 0 ) {
-                output.classList.add("hide");
-            }
-        })
-    });
+    if (entryCount === 0 ) {
+        output.classList.add("hide");
+    }
 }
 
 // Events
 addEntryButton.addEventListener("click", addEntry);
 calculateButton.addEventListener("submit", calculateCalories);
 clearButton.addEventListener("click", clearForm);
-
-
-// bug description: every time `addEntry` is called, the function `deleteEntry` adds event 
-// listener on the delete button. If you clicked 3 add entry, when the delete button is clicked
-// it will also be triggered 3 times.
-// The solution is to query the button every time an entry is added. Then remove the event from the 
-// previous ones and add new to all.
