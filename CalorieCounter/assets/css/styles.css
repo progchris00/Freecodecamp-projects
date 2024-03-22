@@ -57,11 +57,6 @@ main {
   visibility: visible;
 }
 
-.hide-red {
-  background-color: red;
-  display: none;
-}
-
 /* Fonts */
 h1 {
   margin: 10px;

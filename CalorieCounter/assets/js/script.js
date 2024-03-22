@@ -161,8 +161,11 @@ function deleteThisEntry(button) {
     remainingCalories += Number(currentValue);
     consumedCalories -= Number(currentValue);
 
-    consumed.innerText = `${consumedCalories} Calories Consumed`
-    outputCalorie.innerText = `${remainingCalories} Calorie Deficit`
+    const surplusOrDeficit = remainingCalories < 0 ? "Surplus" : "Deficit";
+
+    consumed.innerText = `${consumedCalories} Calories Consumed`;
+    outputCalorie.innerText = `${Math.abs(remainingCalories)} Calorie ${surplusOrDeficit}`;
+    outputCalorie.classList.replace(outputCalorie.classList[0], surplusOrDeficit.toLowerCase());
 
     divToRemove.remove();
 
