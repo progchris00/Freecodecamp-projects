@@ -9,6 +9,7 @@ const output = document.getElementById('output');
 const labelInput = document.querySelector(".label-input");
 let remainingCalories;
 let consumedCalories;
+let exerciseCalories;
 
 let isError = false;
 
@@ -48,6 +49,8 @@ function addEntry() {
         </div>
     </div>`;
     targetInputContainer.insertAdjacentHTML('beforeend', HTMLString);
+
+    entryCount++;
 }
 
 function getCaloriesFromInputs(list) {
@@ -82,9 +85,10 @@ function calculateCalories(e) {
     const lunchCalories = getCaloriesFromInputs(lunchCalorieInputs);
     const dinnerCalories = getCaloriesFromInputs(dinnerCalorieInputs);
     const snacksCalories = getCaloriesFromInputs(snacksCalorieInputs);
-    const exerciseCalories = getCaloriesFromInputs(exerciseCalorieInputs);
     const budgetCalories = getCaloriesFromInputs([budgetNumberInput]);
-
+    
+    exerciseCalories = getCaloriesFromInputs(exerciseCalorieInputs);
+    
     consumedCalories = breakfastCalories + lunchCalories + dinnerCalories + snacksCalories;
     remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
 
@@ -121,7 +125,7 @@ function calculateCalories(e) {
     <hr>
     <p>${budgetCalories} Calories Budgeted</p>
     <p id="consumed">${consumedCalories} Calories Consumed</p>
-    <p>${exerciseCalories} Calories Burned</p>
+    <p id="burned">${exerciseCalories} Calories Burned</p>
     `
     output.classList.remove("hide");
 }
@@ -157,9 +161,17 @@ function deleteThisEntry(button) {
     const currentValue = parentElement.querySelector(".current-value").innerText;
     const outputCalorie = outputDiv.querySelector("#output-calorie"); 
     const consumed = output.querySelector("#consumed");
-    
-    remainingCalories += Number(currentValue);
-    consumedCalories -= Number(currentValue);
+    const burned = output.querySelector("#burned");
+    const closestFieldset = button.closest(".fieldset").getAttribute("id");
+
+    if (closestFieldset === "exercise") {
+        remainingCalories -= Number(currentValue);
+        exerciseCalories -= Number(currentValue);
+        burned.innerText = `${exerciseCalories} Calories Burned`;
+    } else {
+        remainingCalories += Number(currentValue);
+        consumedCalories -= Number(currentValue);
+    }
 
     const surplusOrDeficit = remainingCalories < 0 ? "Surplus" : "Deficit";
 
@@ -180,3 +192,14 @@ function deleteThisEntry(button) {
 addEntryButton.addEventListener("click", addEntry);
 calculateButton.addEventListener("submit", calculateCalories);
 clearButton.addEventListener("click", clearForm);
+
+
+// Deleting exercise entry
+// Bug description: unlike other entries (breakfast, lunch, dinner), the entries added
+// to exercise field will be added to the calories burned. 
+// If an entry from that field is deleted, the calorie is subtracted to the calories consumed
+// It should be subtracted in calories burned.
+
+// Deleting an entry in exercise field should
+// 1. subtract from calories burned
+// 2. subtract from output calorie
