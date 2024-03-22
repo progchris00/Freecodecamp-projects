@@ -33,11 +33,11 @@ function addEntry() {
     <div class="label-input-container">
         <div class="label-input">
             <label for="${entryDropdown.value}-${entryNumber}-name">Entry ${entryNumber} Name</label>
-            <input id="${entryDropdown.value}-${entryNumber}-name" type="text" placeholder="Name">
+            <input id="${entryDropdown.value}-${entryNumber}-name" type="text" placeholder="Name" required>
         </div>
         <div class="label-input">
             <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
-            <input id="${entryDropdown.value}-${entryNumber}-calories" type="number" placeholder="Calories" min="0">
+            <input id="${entryDropdown.value}-${entryNumber}-calories" type="number" placeholder="Calories" min="0" required>
         </div>
         <div class="submitted-value hide">
             <span class="name"></span>
