@@ -192,14 +192,3 @@ function deleteThisEntry(button) {
 addEntryButton.addEventListener("click", addEntry);
 calculateButton.addEventListener("submit", calculateCalories);
 clearButton.addEventListener("click", clearForm);
-
-
-// Deleting exercise entry
-// Bug description: unlike other entries (breakfast, lunch, dinner), the entries added
-// to exercise field will be added to the calories burned. 
-// If an entry from that field is deleted, the calorie is subtracted to the calories consumed
-// It should be subtracted in calories burned.
-
-// Deleting an entry in exercise field should
-// 1. subtract from calories burned
-// 2. subtract from output calorie
