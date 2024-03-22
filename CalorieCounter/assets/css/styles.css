@@ -13,6 +13,8 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+
+  color: #eceded;
 }
 
 main {
@@ -22,7 +24,7 @@ main {
 
 .calorie-inputs,
 .output {
-  background-color: hsla(40, 39%, 95%, 0.9);
+  background-color: #17201b;
   width: 500px;
   padding: 20px 40px;
   border-radius: 20px;
@@ -55,6 +57,39 @@ main {
 
 .submitted-value:hover > .icons > .invisible {
   visibility: visible;
+}
+
+#budget {
+  padding: 3px 5px;
+  margin-bottom: 10px;
+  background-color: #222a2a;
+  border: 2px solid #222a2a;
+}
+
+.controls {
+  margin-top: 20px;
+}
+
+#calculate {
+  padding: 5px 10px;
+  border: 2px solid #000000;
+  background-color: #b3ee4b;
+}
+
+#add-entry {
+  background-color: #b3ee4b;
+}
+
+#clear {
+  background-color: #17201b;
+  border: 1px solid #b3ee4b;
+  color: white;
+  padding: 5px 10px;
+}
+
+#entry-dropdown {
+  background-color: #222a2a;
+  color: #eceded;
 }
 
 /* Fonts */
