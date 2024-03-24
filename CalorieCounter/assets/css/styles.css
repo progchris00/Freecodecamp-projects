@@ -46,7 +46,7 @@ main {
 }
 
 .label-input {
-  margin-bottom: 5px;
+  margin: 0 30px 5px 30px;
 }
 
 .flex {
@@ -55,7 +55,7 @@ main {
 }
 
 .icons img {
-  height: 13px;
+  height: 12px;
 }
 
 .invisible {
@@ -66,10 +66,8 @@ main {
   visibility: visible;
 }
 
-#budget {
-  margin-bottom: 10px;
-  background-color: #f8f3e9;
-  border: 1px solid #908b82;
+.submitted-value {
+  margin: 0 15px 0 15px;
 }
 
 input {
@@ -82,6 +80,24 @@ input {
 
 .controls {
   margin: 30px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.dropdown-and-add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#entry-dropdown {
+  background-color: #efe9dc;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  width: 30%;
+  color: black;
 }
 
 #add-entry,
@@ -93,30 +109,28 @@ input {
   padding: 10px 0;
 }
 
-#calculate {
-  width: 70%;
+#add-entry {
+  width: 30%;
 }
 
-#add-entry {
-  width: 28%;
+.clear-and-submit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+#calculate {
+  width: 70%;
 }
 
 #clear {
   background-color: black;
   border: none;
   color: white;
-  padding: 10px;
+  padding: 10px 0;
   border-radius: 10px;
-  width: 28%;
-}
-
-#entry-dropdown {
-  background-color: #efe9dc;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  width: 33%;
-  color: black;
+  width: 30%;
 }
 
 fieldset {
@@ -124,7 +138,31 @@ fieldset {
   border-radius: 10px;
   border: none;
   margin-bottom: 12px;
-  padding: 15px 10px;
+  padding: 15px 20px;
+}
+
+.budget-calorie-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.budget-calorie-input label {
+  font-size: 16px;
+}
+
+#output {
+  text-align: center;
+}
+
+.icons button {
+  cursor: pointer;
+  background-color: #d3af77;
+  border: none;
+  border-radius: 10px;
+  padding: 4px 8px;
 }
 
 /* Fonts */
@@ -151,10 +189,9 @@ label {
   color: black;
 }
 
-#output {
-  text-align: center;
-}
-
-button {
-  cursor: pointer;
+.deficit,
+.surplus {
+  color: #d3af77;
+  font-weight: 600;
+  font-size: 20px;
 }

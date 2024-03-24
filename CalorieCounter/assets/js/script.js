@@ -31,11 +31,11 @@ function addEntry() {
     const entryNumber = document.querySelectorAll(`#${entryDropdown.value} input[type="number"]`).length + 1;
     const HTMLString = `
     <div class="label-input-container">
-        <div class="label-input">
+        <div class="label-input flex">
             <label for="${entryDropdown.value}-${entryNumber}-name">Entry ${entryNumber} Name</label>
             <input id="${entryDropdown.value}-${entryNumber}-name" type="text" placeholder="Name" required>
         </div>
-        <div class="label-input">
+        <div class="label-input flex">
             <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
             <input id="${entryDropdown.value}-${entryNumber}-calories" type="number" placeholder="Calories" min="0" required>
         </div>
@@ -108,6 +108,7 @@ function calculateCalories(e) {
     const labelInput = document.querySelectorAll(".label-input");
     for (let index = 0; index < labelInput.length; index++) {
         labelInput[index].classList.add("hide");
+        labelInput[index].classList.remove("flex");
     }
 
     for (let index = 0; index < nameValue.length; index++) {
@@ -151,6 +152,7 @@ function editEntry(button) {
     const labelInput = closestLabelInputContainer.querySelectorAll(".label-input");
     for (let index = 0; index < labelInput.length; index++) {
         labelInput[index].classList.remove("hide");
+        labelInput[index].classList.add("flex");
     }
 }
 
