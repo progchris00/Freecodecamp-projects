@@ -14,7 +14,7 @@ body {
   justify-content: center;
   height: 100vh;
 
-  color: #eceded;
+  color: black;
 }
 
 main {
@@ -24,7 +24,7 @@ main {
 
 .calorie-inputs,
 .output {
-  background-color: #17201b;
+  background-color: #f8f3e9;
   width: 500px;
   padding: 20px 40px;
   border-radius: 20px;
@@ -62,38 +62,68 @@ main {
 #budget {
   padding: 3px 5px;
   margin-bottom: 10px;
-  background-color: #222a2a;
-  border: 2px solid #222a2a;
+  background-color: #f8f3e9;
+  border: 1.5px solid #d3af77;
+  border-radius: 7px;
+  color: black;
 }
 
 .controls {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #calculate {
-  padding: 5px 10px;
-  border: 2px solid #000000;
-  background-color: #b3ee4b;
+  padding: 10px 10px;
+  width: 70%;
 }
 
 #add-entry {
-  background-color: #b3ee4b;
+  padding: 10px 30px;
 }
 
 #clear {
-  background-color: #17201b;
-  border: 1px solid #b3ee4b;
+  background-color: black;
   color: white;
-  padding: 5px 10px;
+  padding: 10px 25px;
+  border-radius: 7px;
+  border: 1px solid black;
+  width: 28%;
 }
 
 #entry-dropdown {
-  background-color: #222a2a;
-  color: #eceded;
+  background-color: #efe9dc;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 30px;
+  color: black;
+}
+
+fieldset {
+  background-color: #efe9dc;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 12px;
 }
 
 /* Fonts */
 h1 {
   margin: 10px;
   text-align: center;
+}
+
+legend {
+  color: black;
+}
+
+label {
+  color: black;
+}
+
+#add-entry,
+#calculate {
+  border: none;
+  background-color: #d3af77;
+  color: black;
+  border-radius: 10px;
 }
