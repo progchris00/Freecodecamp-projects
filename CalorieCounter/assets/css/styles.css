@@ -128,15 +128,33 @@ fieldset {
 }
 
 /* Fonts */
+h1,
+legend,
+label,
+.output,
+button {
+  font-family: "Poppins", sans-serif;
+}
+
 h1 {
   margin: 10px;
   text-align: center;
 }
 
 legend {
+  font-size: 14px;
   color: black;
 }
 
 label {
+  font-size: 14px;
   color: black;
+}
+
+#output {
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
 }
