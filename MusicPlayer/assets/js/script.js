@@ -80,8 +80,29 @@ const allSongs = [
 
 const audio = new Audio();
 
+// Object to keep track of the song s
+// the song that is currently playing
+// the time of the current song
 let userData = {
-    songs: [...allSongs],
+    songs: [...allSongs],   // (...) called the spread operator and is used to mutate the original array, can also be used to concatenate two arrays
     currentSong: null,
     songCurrentTime: 0,
 };
+
+
+// Function used to display the songs in the UI
+// uses arrow function, and a function expression: a function that is assigned to a variable
+const renderSongs = (array) => {
+  // Map method iterate through an array and return a new array
+  // map takes a function as an argument, this is called callback function
+  const songsHTML = array.map((songs) => {
+    `<li id="song-0" class="playlist-song"> 
+      <button class="playlist-song-info"></button>
+      <button class="playlist-song-delete"></button>
+    </li>`
+  })
+  
+  playlistSongs.innerHTML += songsHTML;
+}
+
+renderSongs(userData);
