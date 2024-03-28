@@ -96,13 +96,16 @@ const renderSongs = (array) => {
   // Map method iterate through an array and return a new array
   // map takes a function as an argument, this is called callback function
   const songsHTML = array.map((songs) => {
-    `<li id="song-0" class="playlist-song"> 
-      <button class="playlist-song-info"></button>
+    return `<li id="song-${songs.id}" class="playlist-song">
+      <button class="playlist-song-info">
+        <span class="playlist-song-title">${songs.title}</span>
+        <span class="playlist-song-artist">${songs.artist}</span>
+        <span class="playlist-song-duration">${songs.duration}</span>
+      </button>
       <button class="playlist-song-delete"></button>
-    </li>`
-  })
-  
-  playlistSongs.innerHTML += songsHTML;
+    </li>`;
+  }).join("")
+  playlistSongs.innerHTML = songsHTML;
 }
 
-renderSongs(userData);
+renderSongs(userData.songs);
