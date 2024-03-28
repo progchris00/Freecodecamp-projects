@@ -104,8 +104,29 @@ const renderSongs = (array) => {
       </button>
       <button class="playlist-song-delete"></button>
     </li>`;
-  }).join("")
+  }).join("") // the return value is array so using join will turn it to list and remove the comma
   playlistSongs.innerHTML = songsHTML;
 }
 
-renderSongs(userData.songs);
+// Function used to sort the songs by title
+// the sort method uses a compareFn to determine the order of the elements
+const sortSongs = () => {
+  userData?.songs.sort((a, b) => {
+    if (a.title < b.title) {
+      return -1   //returns -1 if a comes before b
+    }
+
+    if (a.title > b.title) {
+      return 1    // return 1 if a comes after b
+    }
+      
+    return 0    //return 0 if a and b is the same
+
+  });
+  return userData?.songs
+} ;
+
+
+// optional chaining (?.) returns undefined
+// instead of throwing an e
+renderSongs(sortSongs(userData?.songs));
