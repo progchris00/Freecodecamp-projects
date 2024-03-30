@@ -128,5 +128,9 @@ const sortSongs = () => {
 
 
 // optional chaining (?.) returns undefined
-// instead of throwing an e
-renderSongs(sortSongs(userData?.songs));
+// instead of throwing an error
+
+// No need to pass an argument on sortSongs function
+//  because it is already using userData?.songs inside it.
+// Now, the return value of the sortSongs is what is past to the renderSongs
+renderSongs(sortSongs());
