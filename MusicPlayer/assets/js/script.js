@@ -90,6 +90,16 @@ let userData = {
 };
 
 
+// Function for playing a song
+const playSong = (id) => {
+  const song = userData?.songs.find((song) => song.id === id);  // Finds the first song with the same id
+
+  // Assign src and title to the audio object
+  audio.src = song.src;
+  audio.title = song.title;
+}
+
+
 // Function used to display the songs in the UI
 // uses arrow function, and a function expression: a function that is assigned to a variable
 const renderSongs = (array) => {
