@@ -97,6 +97,15 @@ const playSong = (id) => {
   // Assign src and title to the audio object
   audio.src = song.src;
   audio.title = song.title;
+
+  // When the play button is clicked, 
+  // If there is no song currently playing or song is changed, reset the audio current time to 0 
+  if (userData?.currentSong === null || userData?.currentSong.id !== song.id) {
+    audio.currentTime = 0;
+  // else, play the song where it is stopped, paused
+  } else {
+    audio.currentTime = userData?.songCurrentTime;
+  }
 }
 
 
