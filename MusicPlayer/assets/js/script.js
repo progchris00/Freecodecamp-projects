@@ -143,7 +143,12 @@ const sortSongs = () => {
 
   });
   return userData?.songs
-} ;
+};
+
+
+playButton.addEventListener("click", () => {
+
+});
 
 
 // optional chaining (?.) returns undefined
