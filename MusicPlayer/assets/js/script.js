@@ -156,9 +156,21 @@ const pauseSong = () => {
   audio.pause()
 }
 
+const playNextSong = () => {
+  if (userData?.currentSong === null) {
+    playSong(userData?.songs[0].id);
+  } else {
+    const currentSongIndex = getCurrentSongIndex();
+    playSong(userData?.songs[currentSongIndex + 1].id);
+  }
+}
+
+// This variable will get and store the index of the current song on the mutated song array
+// This is useful when the playlist is shuffled.
+const getCurrentSongIndex = () => userData.songs.indexOf(userData.currentSong);
 
 playButton.addEventListener("click", () => {
-  if(userData?.currentSong === null) {
+  if (userData?.currentSong === null) {
     playSong(userData?.songs[0].id);
   } else {
     playSong(userData?.currentSong.id);
@@ -166,6 +178,7 @@ playButton.addEventListener("click", () => {
 });
 
 pauseButton.addEventListener("click", pauseSong);
+nextButton.addEventListener("click", playNextSong);
 
 // optional chaining (?.) returns undefined
 // instead of throwing an error
