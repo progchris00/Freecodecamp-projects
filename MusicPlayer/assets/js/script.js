@@ -162,6 +162,17 @@ const playNextSong = () => {
   } else {
     const currentSongIndex = getCurrentSongIndex();
     playSong(userData?.songs[currentSongIndex + 1].id);
+    // Since on sorted playlist, "Can't stay down" is the first one (id:1), adding 1 will play the next on its id,
+    // What we want is to play the next song on the array and not particularly the one next to its id.
+  }
+}
+
+const playPreviousSong = () => {
+  if (userData?.currentSong === null) {
+    playSong(userData?.songs[0].id);
+  } else {
+    const currentSongIndex = getCurrentSongIndex();
+    playSong(userData?.songs[currentSongIndex - 1].id);
   }
 }
 
@@ -179,6 +190,7 @@ playButton.addEventListener("click", () => {
 
 pauseButton.addEventListener("click", pauseSong);
 nextButton.addEventListener("click", playNextSong);
+previousButton.addEventListener("click", playPreviousSong);
 
 // optional chaining (?.) returns undefined
 // instead of throwing an error
