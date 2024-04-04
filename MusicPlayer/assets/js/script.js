@@ -149,6 +149,13 @@ const sortSongs = () => {
   return userData?.songs
 };
 
+const pauseSong = () => {
+  userData.songCurrentTime = audio.currentTime;
+
+  playButton.classList.remove("playing");
+  audio.pause()
+}
+
 
 playButton.addEventListener("click", () => {
   if(userData?.currentSong === null) {
@@ -158,6 +165,7 @@ playButton.addEventListener("click", () => {
   }
 });
 
+pauseButton.addEventListener("click", pauseSong);
 
 // optional chaining (?.) returns undefined
 // instead of throwing an error
