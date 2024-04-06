@@ -171,8 +171,10 @@ const playPreviousSong = () => {
   if (userData?.currentSong === null) {
     playSong(userData?.songs[0].id);
   } else {
-    const currentSongIndex = getCurrentSongIndex();
-    playSong(userData?.songs[currentSongIndex - 1].id);
+    if (userData?.currentSong.id !== 1) {
+      const currentSongIndex = getCurrentSongIndex();
+      playSong(userData?.songs[currentSongIndex - 1].id);
+    }
   }
 }
 
