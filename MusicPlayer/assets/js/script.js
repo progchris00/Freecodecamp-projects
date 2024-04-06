@@ -171,6 +171,7 @@ const playPreviousSong = () => {
   if (userData?.currentSong === null) {
     playSong(userData?.songs[0].id);
   } else {
+    // Not included in the tutorial, the code condition below is added as my own version
     if (userData?.currentSong.id !== 1) {
       const currentSongIndex = getCurrentSongIndex();
       playSong(userData?.songs[currentSongIndex - 1].id);
