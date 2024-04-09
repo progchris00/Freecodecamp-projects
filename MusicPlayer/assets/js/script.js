@@ -201,6 +201,8 @@ const highlightCurrentSong = () => {
     songEl.removeAttribute("aria-current");
   });
 
+  // Set the attribute to true only if there is songToHighlight.
+  // songToHighlight is set to null when shuffle button is activated.
   if (songToHighlight)
   songToHighlight.setAttribute("aria-current", "true");
 };
@@ -214,14 +216,29 @@ const setPlayerDisplay = () => {
 
   // Using ternary operator, set the textContent if the currentSong properties are not null
   // This is important when shuffling the songs.
+
+  // Once this function is called again on the shuffle function, 
+  //  if this condition is not present, it will always set the text content to title even 
+  //  if the currentSong is null
   playingSong.textContent = currentSongTitle ? currentSongTitle : "";
   songArtist.textContent = currentSongArtist ? currentSongArtist : "";
 };
 
+const shuffle = () => {
+  userData.songs.sort(() => Math.random() - 0.5);
+  userData.currentSong = null;
+  userData.songCurrentTime = 0;
+
+  renderSongs(userData?.songs);
+  pauseSong();
+  setPlayerDisplay();
+  setPlayButtonAccessibleText();
+}
+
 pauseButton.addEventListener("click", pauseSong);
 nextButton.addEventListener("click", playNextSong);
 previousButton.addEventListener("click", playPreviousSong);
-
+shuffleButton.addEventListener("click", shuffle);
 // optional chaining (?.) returns undefined
 // instead of throwing an error
 
