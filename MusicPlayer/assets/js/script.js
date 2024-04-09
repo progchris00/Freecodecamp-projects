@@ -110,6 +110,7 @@ const playSong = (id) => {
   userData.currentSong = song;
   playButton.classList.add("playing");
   highlightCurrentSong();
+  setPlayerDisplay();
   audio.play();
 }
 
@@ -202,6 +203,19 @@ const highlightCurrentSong = () => {
 
   if (songToHighlight)
   songToHighlight.setAttribute("aria-current", "true");
+};
+
+const setPlayerDisplay = () => {
+  const playingSong = document.getElementById("player-song-title");
+  const songArtist = document.getElementById("player-song-artist");
+
+  const currentSongTitle = userData?.currentSong?.title;
+  const currentSongArtist = userData?.currentSong?.artist;
+
+  // Using ternary operator, set the textContent if the currentSong properties are not null
+  // This is important when shuffling the songs.
+  playingSong.textContent = currentSongTitle ? currentSongTitle : "";
+  songArtist.textContent = currentSongArtist ? currentSongArtist : "";
 };
 
 pauseButton.addEventListener("click", pauseSong);
