@@ -151,6 +151,22 @@ const sortSongs = () => {
   return userData?.songs
 };
 
+// Additional sorting options when the sort button is added
+const sortByDuration = () => {
+  userData?.songs.sort((a, b) => {
+    if (a.duration < b.duration) {
+      return - 1
+    }
+
+    if (a.duration > b.duration) {
+      return 1
+    }
+      
+    return 0
+  });
+  return userData?.songs
+}
+
 const pauseSong = () => {
   userData.songCurrentTime = audio.currentTime;
 
@@ -245,4 +261,4 @@ shuffleButton.addEventListener("click", shuffle);
 // No need to pass an argument on sortSongs function
 //  because it is already using userData?.songs inside it.
 // Now, the return value of the sortSongs is what is past to the renderSongs
-renderSongs(sortSongs());
+renderSongs(sortByDuration());
