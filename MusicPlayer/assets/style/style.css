@@ -369,49 +369,12 @@ button:focus,
 }
 
 /* Popover */
-body [popover] {
-  border: 1px solid black;
-  width: 120px;
+[popover] {
   inset: unset;
+  bottom: 50px;
+  right: 50px;
 }
 
-#mainpopover {
-  left: 7px;
-  top: 38px;
-}
-
-#subpopover {
-  left: 120px;
-  top: 86px;
-}
-
-.listcontainer,
-.subcontainer {
-  display: flex;
-  flex-direction: column;
-}
-
-a {
-  flex: 1;
-  text-decoration: none;
-  outline: none;
-  text-align: center;
-  line-height: 3;
-  color: black;
-}
-
-a:link,
-a:visited {
-  background: palegoldenrod;
-  color: black;
-}
-
-a:hover,
-a:focus {
-  background: orange;
-}
-
-a:active {
-  background: darkred;
-  color: white;
+.listcontainer {
+  background-color: var(--background-color);
 }
