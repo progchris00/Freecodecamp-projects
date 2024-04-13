@@ -5,6 +5,9 @@ const pauseButton = document.getElementById("pause");
 const nextButton = document.getElementById("next");
 const shuffleButton = document.getElementById("shuffle");
 
+// Sorting buttons (additional feature)
+const sortByDurationButton = document.getElementById("sort-by-duration");
+
 const allSongs = [
     {
         id: 0,
@@ -270,10 +273,15 @@ pauseButton.addEventListener("click", pauseSong);
 nextButton.addEventListener("click", playNextSong);
 previousButton.addEventListener("click", playPreviousSong);
 shuffleButton.addEventListener("click", shuffle);
+
+// Bug, after clicking, the function playlist should be rendered by renderSong function
+sortByDurationButton.addEventListener("click", sortByDuration);
+
+
 // optional chaining (?.) returns undefined
 // instead of throwing an error
 
 // No need to pass an argument on sortSongs function
 //  because it is already using userData?.songs inside it.
 // Now, the return value of the sortSongs is what is past to the renderSongs
-renderSongs(sortByArtist());
+renderSongs(sortByDuration());
