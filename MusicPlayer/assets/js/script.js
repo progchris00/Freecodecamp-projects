@@ -5,11 +5,11 @@ const pauseButton = document.getElementById("pause");
 const nextButton = document.getElementById("next");
 const shuffleButton = document.getElementById("shuffle");
 
-// Query all then loop
-const sortButtons = document.querySelectorAll(".sort-btn")
+// All sorting button types
+const sortButtonTypes = document.querySelectorAll(".sort-btn-type")
 
 const sortButton = document.getElementById("sort-btn");
-const sortTypes = document.getElementById("sort-types");
+const sortButtonsContainer = document.getElementById("sort-types");
 
 const allSongs = [
     {
@@ -120,7 +120,6 @@ const playSong = (id) => {
   setPlayerDisplay();
   audio.play();
 }
-
 
 // Function used to display the songs in the UI
 // uses arrow function, and a function expression: a function that is assigned to a variable
@@ -273,28 +272,18 @@ const shuffle = () => {
   setPlayButtonAccessibleText();
 };
 
+// This function will return the song playlist based on the button that is clicked
 const sortByType = () => {
-// Function that will set the sortType based on the button than will be chosen on how the songs will be sorted
   if (userData.sortBy === "duration") {
-    renderSongs(sortByDuration())
+    return sortByDuration()
   } else if (userData.sortBy === "artist") {
-    renderSongs(sortByArtist())
+    return sortByArtist()
   } else {
-    renderSongs(sortSongs())
+    return sortSongs()
   }
 };
 
-// sortByDurationButton.addEventListener("click", () => {
-//   userData.sortBy = "Duration";
-
-//   if (userData?.sortBy === null) {
-//     renderSongs(userData?.songs);
-//   } else {
-//     renderSongs(sortByType(userData.sortBy));
-//   }
-// })
-
-sortButtons.forEach((button) => {
+sortButtonTypes.forEach((button) => {
   button.addEventListener("click", () => {
     const value = button.value
     userData.sortBy = value;
@@ -304,10 +293,10 @@ sortButtons.forEach((button) => {
 
 // Event to show and hide the sorting types button
 sortButton.addEventListener("click", () => {
-  if (sortTypes.style.display === "") {
-    sortTypes.style.display = "block";
+  if (sortButtonsContainer.style.display === "") {
+    sortButtonsContainer.style.display = "block";
   } else {
-    sortTypes.style.display = "";
+    sortButtonsContainer.style.display = "";
   }
 });
 
@@ -323,12 +312,5 @@ shuffleButton.addEventListener("click", shuffle);
 //  because it is already using userData?.songs inside it.
 // Now, the return value of the sortSongs is what is past to the renderSongs
 
-// By default, sort the songs based on the original position. Sort them next based on the sortByType
-
-// if (userData?.sortBy === null) {
-//   renderSongs(userData?.songs);
-// } else {
-  //   renderSongs(sortBy`${userData.sortBy}`());
-  // }
-
-renderSongs(sortSongs());
+// By default, load the songs based on the original position.
+renderSongs(userData?.songs);
