@@ -275,7 +275,7 @@ previousButton.addEventListener("click", playPreviousSong);
 shuffleButton.addEventListener("click", shuffle);
 
 // Bug, after clicking, the function playlist should be rendered by renderSong function
-sortByDurationButton.addEventListener("click", sortByDuration);
+// sortByDurationButton.addEventListener("click", sortByDuration);
 
 
 // optional chaining (?.) returns undefined

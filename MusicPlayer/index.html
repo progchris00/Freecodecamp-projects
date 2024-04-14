@@ -95,21 +95,13 @@
                   <rect x="18.5885" width="4.63633" height="18.5453" />
                 </svg>
               </button>
-              <button
-                popovertarget="sort-types"
-                id="sort-button"
-                type="button"
-                popovertargetaction="toggle"
-              >
-                Sort
-              </button>
-              <div id="sort-types" popover anchor="sort-button">
-                <nav class="listcontainer">
-                  <button id="sort-by-title">Title</button>
-                  <button id="sort-by-duration">Duration</button>
-                  <button id="sort-by-author">Author</button>
-                  <button id="sort-by-artist">Artist</button>
-                </nav>
+              <div class="dropdown-menu">
+                <button class="sort-btn">Sort</button>
+                <div class="sort-types">
+                  <button class="sort-by-title">Title</button>
+                  <button class="sort-by-duration">Duration</button>
+                  <button class="sort-by-artist">Artist</button>
+                </div>
               </div>
               <button id="shuffle" class="shuffle" aria-label="Shuffle">
                 <svg
