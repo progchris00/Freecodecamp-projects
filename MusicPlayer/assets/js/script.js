@@ -7,6 +7,9 @@ const shuffleButton = document.getElementById("shuffle");
 
 // Sorting buttons (additional feature)
 const sortByDurationButton = document.getElementById("sort-by-duration");
+const sortByTitleButton = document.getElementById("sort-by-title");
+const sortByArtistButton = document.getElementById("sort-by-artist");
+
 const sortButton = document.getElementById("sort-btn");
 const sortTypes = document.getElementById("sort-types");
 
@@ -92,6 +95,7 @@ let userData = {
     songs: [...allSongs],   // (...) called the spread operator and is used to mutate the original array, can also be used to concatenate two arrays
     currentSong: null,
     songCurrentTime: 0,
+    sortingType: null,
 };
 
 
@@ -269,8 +273,13 @@ const shuffle = () => {
   pauseSong();
   setPlayerDisplay();
   setPlayButtonAccessibleText();
-}
+};
 
+const sortByType = () => {
+// Function that will set the sortType based on the button than will be chosen on how the songs will be sorted
+};
+
+// Event to show and hide the sorting types button
 sortButton.addEventListener("click", () => {
   if (sortTypes.style.display === "") {
     sortTypes.style.display = "block";
@@ -284,14 +293,17 @@ nextButton.addEventListener("click", playNextSong);
 previousButton.addEventListener("click", playPreviousSong);
 shuffleButton.addEventListener("click", shuffle);
 
-// Bug, after clicking, the function playlist should be rendered by renderSong function
-// sortByDurationButton.addEventListener("click", sortByDuration);
-
-
 // optional chaining (?.) returns undefined
 // instead of throwing an error
 
 // No need to pass an argument on sortSongs function
 //  because it is already using userData?.songs inside it.
 // Now, the return value of the sortSongs is what is past to the renderSongs
-renderSongs(sortByDuration());
+
+// By default, sort the songs based on the original position. Sort them next based on the sortByType
+
+if (userData?.sortingType === null) {
+  renderSongs(userData?.songs);
+} else {
+  renderSongs(sortByType());
+}
