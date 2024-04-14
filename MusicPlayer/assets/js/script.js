@@ -5,10 +5,13 @@ const pauseButton = document.getElementById("pause");
 const nextButton = document.getElementById("next");
 const shuffleButton = document.getElementById("shuffle");
 
-// Sorting buttons (additional feature)
+// Sorting buttons (additional feature) Individual
 const sortByDurationButton = document.getElementById("sort-by-duration");
 const sortByTitleButton = document.getElementById("sort-by-title");
 const sortByArtistButton = document.getElementById("sort-by-artist");
+
+// Query all then loop
+const sortButtons = document.querySelectorAll(".sort-btn")
 
 const sortButton = document.getElementById("sort-btn");
 const sortTypes = document.getElementById("sort-types");
@@ -95,7 +98,7 @@ let userData = {
     songs: [...allSongs],   // (...) called the spread operator and is used to mutate the original array, can also be used to concatenate two arrays
     currentSong: null,
     songCurrentTime: 0,
-    sortingType: null,
+    sortBy: null,
 };
 
 
@@ -277,7 +280,32 @@ const shuffle = () => {
 
 const sortByType = () => {
 // Function that will set the sortType based on the button than will be chosen on how the songs will be sorted
+  if (userData.sortBy === "duration") {
+    renderSongs(sortByDuration())
+  } else if (userData.sortBy === "artist") {
+    renderSongs(sortByArtist())
+  } else {
+    renderSongs(sortSongs())
+  }
 };
+
+// sortByDurationButton.addEventListener("click", () => {
+//   userData.sortBy = "Duration";
+
+//   if (userData?.sortBy === null) {
+//     renderSongs(userData?.songs);
+//   } else {
+//     renderSongs(sortByType(userData.sortBy));
+//   }
+// })
+
+sortButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const value = button.value
+    userData.sortBy = value;
+    renderSongs(sortByType());
+  })
+});
 
 // Event to show and hide the sorting types button
 sortButton.addEventListener("click", () => {
@@ -302,8 +330,10 @@ shuffleButton.addEventListener("click", shuffle);
 
 // By default, sort the songs based on the original position. Sort them next based on the sortByType
 
-if (userData?.sortingType === null) {
-  renderSongs(userData?.songs);
-} else {
-  renderSongs(sortByType());
-}
+// if (userData?.sortBy === null) {
+//   renderSongs(userData?.songs);
+// } else {
+  //   renderSongs(sortBy`${userData.sortBy}`());
+  // }
+
+renderSongs(sortSongs());
