@@ -389,7 +389,3 @@ button:focus,
 .sort-types button:hover {
   background-color: var(--primary-color);
 }
-
-.dropdown-menu:hover .sort-types {
-  display: block;
-}

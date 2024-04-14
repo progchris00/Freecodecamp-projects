@@ -7,6 +7,8 @@ const shuffleButton = document.getElementById("shuffle");
 
 // Sorting buttons (additional feature)
 const sortByDurationButton = document.getElementById("sort-by-duration");
+const sortButton = document.getElementById("sort-btn");
+const sortTypes = document.getElementById("sort-types");
 
 const allSongs = [
     {
@@ -268,6 +270,14 @@ const shuffle = () => {
   setPlayerDisplay();
   setPlayButtonAccessibleText();
 }
+
+sortButton.addEventListener("click", () => {
+  if (sortTypes.style.display === "") {
+    sortTypes.style.display = "block";
+  } else {
+    sortTypes.style.display = "";
+  }
+});
 
 pauseButton.addEventListener("click", pauseSong);
 nextButton.addEventListener("click", playNextSong);
