@@ -5,11 +5,6 @@ const pauseButton = document.getElementById("pause");
 const nextButton = document.getElementById("next");
 const shuffleButton = document.getElementById("shuffle");
 
-// Sorting buttons (additional feature) Individual
-const sortByDurationButton = document.getElementById("sort-by-duration");
-const sortByTitleButton = document.getElementById("sort-by-title");
-const sortByArtistButton = document.getElementById("sort-by-artist");
-
 // Query all then loop
 const sortButtons = document.querySelectorAll(".sort-btn")
 
