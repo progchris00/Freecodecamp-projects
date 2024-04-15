@@ -140,7 +140,7 @@ const renderSongs = (array) => {
 
 // Function used to sort the songs by title
 // the sort method uses a compareFn to determine the order of the elements
-const sortSongs = () => {
+const sortBySongTitle = () => {
   userData?.songs.sort((a, b) => {
     if (a.title < b.title) {
       return -1   //returns -1 if a comes before b
@@ -157,7 +157,7 @@ const sortSongs = () => {
 };
 
 // Additional sorting options when the sort button is added
-const sortByDuration = () => {
+const sortBySongDuration = () => {
   userData?.songs.sort((a, b) => {
     if (a.duration < b.duration) {
       return - 1
@@ -172,7 +172,7 @@ const sortByDuration = () => {
   return userData?.songs
 }
 
-const sortByArtist = () => {
+const sortByArtistName = () => {
   userData?.songs.sort((a, b) => {
     if (a.artist < b.artist) {
       return - 1
@@ -284,13 +284,13 @@ sortButtonTypes.forEach((button) => {
 const getSortedSongs = (sortingCriteria) => {
   switch (sortingCriteria) {
     case "duration":
-      return sortByDuration()
+      return sortBySongDuration()
 
     case "artist":
-      return sortByArtist()
+      return sortByArtistName()
 
     case "title":
-      return sortSongs()
+      return sortBySongTitle()
   }
 };
 
@@ -311,9 +311,9 @@ shuffleButton.addEventListener("click", shuffle);
 // optional chaining (?.) returns undefined
 // instead of throwing an error
 
-// No need to pass an argument on sortSongs function
+// No need to pass an argument on sortBySongTitle function
 //  because it is already using userData?.songs inside it.
-// Now, the return value of the sortSongs is what is past to the renderSongs
+// Now, the return value of the sortBySongTitle is what is past to the renderSongs
 
 // By default, load the songs based on the original position.
 renderSongs(userData?.songs);
