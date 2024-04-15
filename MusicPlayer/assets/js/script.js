@@ -262,6 +262,15 @@ sortButton.addEventListener("click", () => {
   }
 });
 
+// Additional feature: enables hiding dropdown menu when clicking outside
+// instead of just when clicking the sort button only
+// Hiding menu when clicking outside
+document.addEventListener("click", e => {
+  if (!sortButtonsContainer.contains(e.target) && e.target !== sortButton) {
+    sortButtonsContainer.style.display = ""
+  }
+})
+
 pauseButton.addEventListener("click", pauseSong);
 nextButton.addEventListener("click", playNextSong);
 previousButton.addEventListener("click", playPreviousSong);
