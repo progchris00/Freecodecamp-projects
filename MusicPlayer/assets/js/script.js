@@ -138,54 +138,20 @@ const renderSongs = (array) => {
   playlistSongs.innerHTML = songsHTML;
 }
 
-// Function used to sort the songs by title
-// the sort method uses a compareFn to determine the order of the elements
-const sortBySongTitle = () => {
+const sortPlaylist = (criteria) => {
   userData?.songs.sort((a, b) => {
-    if (a.title < b.title) {
-      return -1   //returns -1 if a comes before b
+    if (a[criteria] < b[criteria]) {
+      return -1
     }
 
-    if (a.title > b.title) {
-      return 1    // return 1 if a comes after b
+    if (a[criteria] > b[criteria]) {
+      return 1
     }
-      
-    return 0    //return 0 if a and b is the same
+    return 0
 
   });
   return userData?.songs
 };
-
-// Additional sorting options when the sort button is added
-const sortBySongDuration = () => {
-  userData?.songs.sort((a, b) => {
-    if (a.duration < b.duration) {
-      return - 1
-    }
-
-    if (a.duration > b.duration) {
-      return 1
-    }
-      
-    return 0
-  });
-  return userData?.songs
-}
-
-const sortByArtistName = () => {
-  userData?.songs.sort((a, b) => {
-    if (a.artist < b.artist) {
-      return - 1
-    }
-
-    if (a.artist > b.artist) {
-      return 1
-    }
-      
-    return 0
-  });
-  return userData?.songs
-}
 
 const pauseSong = () => {
   userData.songCurrentTime = audio.currentTime;
@@ -276,23 +242,9 @@ const shuffle = () => {
 sortButtonTypes.forEach((button) => {
   button.addEventListener("click", () => {
     const sortingCriteria = button.value
-    renderSongs(getSortedSongs(sortingCriteria));
+    renderSongs(sortPlaylist(sortingCriteria));
   })
 });
-
-// This function will return the song playlist based on the button that is clicked
-const getSortedSongs = (sortingCriteria) => {
-  switch (sortingCriteria) {
-    case "duration":
-      return sortBySongDuration()
-
-    case "artist":
-      return sortByArtistName()
-
-    case "title":
-      return sortBySongTitle()
-  }
-};
 
 // Event to show and hide the sorting types button
 sortButton.addEventListener("click", () => {
