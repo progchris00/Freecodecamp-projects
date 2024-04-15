@@ -93,7 +93,6 @@ let userData = {
     songs: [...allSongs],   // (...) called the spread operator and is used to mutate the original array, can also be used to concatenate two arrays
     currentSong: null,
     songCurrentTime: 0,
-    sortBy: null,
 };
 
 
@@ -272,24 +271,28 @@ const shuffle = () => {
   setPlayButtonAccessibleText();
 };
 
-// This function will return the song playlist based on the button that is clicked
-const sortByType = () => {
-  if (userData.sortBy === "duration") {
-    return sortByDuration()
-  } else if (userData.sortBy === "artist") {
-    return sortByArtist()
-  } else {
-    return sortSongs()
-  }
-};
+// Additional feature: Sorting by criteria
 
 sortButtonTypes.forEach((button) => {
   button.addEventListener("click", () => {
-    const value = button.value
-    userData.sortBy = value;
-    renderSongs(sortByType());
+    const sortingCriteria = button.value
+    renderSongs(getSortedSongs(sortingCriteria));
   })
 });
+
+// This function will return the song playlist based on the button that is clicked
+const getSortedSongs = (sortingCriteria) => {
+  switch (sortingCriteria) {
+    case "duration":
+      return sortByDuration()
+
+    case "artist":
+      return sortByArtist()
+
+    case "title":
+      return sortSongs()
+  }
+};
 
 // Event to show and hide the sorting types button
 sortButton.addEventListener("click", () => {
