@@ -150,6 +150,13 @@ const sortPlaylist = (criteria) => {
     return 0
 
   });
+  userData.currentSong = null;
+  userData.songCurrentTime = 0;
+
+  pauseSong();
+  setPlayerDisplay();
+  // setPlayButtonAccessibleText();
+
   return userData?.songs
 };
 
