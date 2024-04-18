@@ -117,6 +117,7 @@ const playSong = (id) => {
   playButton.classList.add("playing");
   highlightCurrentSong();
   setPlayerDisplay();
+  setPlayButtonAccessibleText();
   audio.play();
 }
 
@@ -155,7 +156,7 @@ const sortPlaylist = (criteria) => {
 
   pauseSong();
   setPlayerDisplay();
-  // setPlayButtonAccessibleText();
+  setPlayButtonAccessibleText();
 
   return userData?.songs
 };
@@ -243,6 +244,17 @@ const shuffle = () => {
   setPlayerDisplay();
   setPlayButtonAccessibleText();
 };
+
+// Function for setting the aria label of the play button
+const setPlayButtonAccessibleText = () => {
+  const song = userData?.currentSong || userData?.songs[0];
+
+  playButton.setAttribute(
+    "aria-label",
+    song?.title ? `Play ${song?.title}` : `Play`
+  );
+};
+
 
 // Additional feature: Sorting by criteria
 
