@@ -259,12 +259,10 @@ const setPlayButtonAccessibleText = () => {
 
 // Additional feature: muting song
 const muteSong = () => {
-  if (userData.isMuted) {
-    audio.volume = 1;
-    userData.isMuted = false;
+  if (audio.muted) {
+    audio.muted = false;
   } else {
-    audio.volume = 0;
-    userData.isMuted = true;
+    audio.muted = true;
   }
 };
 
