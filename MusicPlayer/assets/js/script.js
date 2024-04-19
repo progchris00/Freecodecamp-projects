@@ -4,6 +4,7 @@ const previousButton = document.getElementById("previous");
 const pauseButton = document.getElementById("pause");
 const nextButton = document.getElementById("next");
 const shuffleButton = document.getElementById("shuffle");
+const muteButton = document.getElementById("mute");
 
 // All sorting button types
 const sortButtonTypes = document.querySelectorAll(".sort-btn-type")
@@ -93,6 +94,7 @@ let userData = {
     songs: [...allSongs],   // (...) called the spread operator and is used to mutate the original array, can also be used to concatenate two arrays
     currentSong: null,
     songCurrentTime: 0,
+    isMuted: false,
 };
 
 
@@ -254,6 +256,19 @@ const setPlayButtonAccessibleText = () => {
     song?.title ? `Play ${song?.title}` : `Play`
   );
 };
+
+// Additional feature: muting song
+const muteSong = () => {
+  if (userData.isMuted) {
+    audio.volume = 1;
+    userData.isMuted = false;
+  } else {
+    audio.volume = 0;
+    userData.isMuted = true;
+  }
+};
+
+muteButton.addEventListener("click", muteSong);
 
 
 // Additional feature: Sorting by criteria
