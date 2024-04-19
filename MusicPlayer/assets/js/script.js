@@ -5,6 +5,7 @@ const pauseButton = document.getElementById("pause");
 const nextButton = document.getElementById("next");
 const shuffleButton = document.getElementById("shuffle");
 const muteButton = document.getElementById("mute");
+const songCurrentTime = document.getElementById("song-current-time");
 
 // All sorting button types
 const sortButtonTypes = document.querySelectorAll(".sort-btn-type")
@@ -120,6 +121,7 @@ const playSong = (id) => {
   setPlayerDisplay();
   setPlayButtonAccessibleText();
   audio.play();
+  audio.currentTime = 58;
 }
 
 // Function used to display the songs in the UI
@@ -265,8 +267,24 @@ const muteSong = () => {
   }
 };
 
-muteButton.addEventListener("click", muteSong);
+// Additional feature: tracking song current time
+audio.addEventListener("timeupdate", (event) => {
+  let currentSongTimeInMinutes = Math.floor(audio.currentTime / 60);
+  let currentSongTimeInSeconds = Math.floor(audio.currentTime - currentSongTimeInMinutes * 60);
 
+  if (currentSongTimeInMinutes < 10) {
+    currentSongTimeInMinutes = "0" + currentSongTimeInMinutes;
+  }
+
+  if (currentSongTimeInSeconds < 10) {
+    currentSongTimeInSeconds = "0" + currentSongTimeInSeconds;
+  }
+
+  songCurrentTime.innerHTML = `${currentSongTimeInMinutes} : ${currentSongTimeInSeconds}`;
+});
+
+
+muteButton.addEventListener("click", muteSong);
 
 // Additional feature: Sorting by criteria
 
