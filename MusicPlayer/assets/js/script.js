@@ -94,7 +94,6 @@ let userData = {
     songs: [...allSongs],   // (...) called the spread operator and is used to mutate the original array, can also be used to concatenate two arrays
     currentSong: null,
     songCurrentTime: 0,
-    isMuted: false,
 };
 
 
