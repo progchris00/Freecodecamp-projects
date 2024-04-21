@@ -389,3 +389,11 @@ button:focus,
 .sort-types button:hover {
   background-color: var(--primary-color);
 }
+
+#song-current-time {
+  margin: 0;
+}
+
+.hide {
+  display: none;
+}

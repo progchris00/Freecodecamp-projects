@@ -117,6 +117,7 @@ const playSong = (id) => {
 
   userData.currentSong = song;
   playButton.classList.add("playing");
+  displayCurrentTotalDuration();
   highlightCurrentSong();
   setPlayerDisplay();
   setPlayButtonAccessibleText();
@@ -267,20 +268,27 @@ const muteSong = () => {
 };
 
 // Additional feature: tracking song current time
-audio.addEventListener("timeupdate", (event) => {
-  let currentSongTimeInMinutes = Math.floor(audio.currentTime / 60);
-  let currentSongTimeInSeconds = Math.floor(audio.currentTime - currentSongTimeInMinutes * 60);
+const displayCurrentTotalDuration = () => {
+  audio.addEventListener("timeupdate", (event) => {
+    let currentSongTimeInMinutes = Math.floor(audio.currentTime / 60);
+    let currentSongTimeInSeconds = Math.floor(audio.currentTime - currentSongTimeInMinutes * 60);
 
-  if (currentSongTimeInMinutes < 10) {
-    currentSongTimeInMinutes = "0" + currentSongTimeInMinutes;
-  }
+    if (currentSongTimeInMinutes < 10) {
+      currentSongTimeInMinutes = "0" + currentSongTimeInMinutes;
+    }
 
-  if (currentSongTimeInSeconds < 10) {
-    currentSongTimeInSeconds = "0" + currentSongTimeInSeconds;
-  }
+    if (currentSongTimeInSeconds < 10) {
+      currentSongTimeInSeconds = "0" + currentSongTimeInSeconds;
+    }
 
-  songCurrentTime.innerHTML = `${currentSongTimeInMinutes} : ${currentSongTimeInSeconds} - ${userData.currentSong.duration}`;
-});
+    if (userData.currentSong === null) {
+      songCurrentTime.classList.add("hide");
+    } else {
+      songCurrentTime.classList.remove("hide");
+      songCurrentTime.innerHTML = `${currentSongTimeInMinutes}:${currentSongTimeInSeconds} - ${userData.currentSong.duration}`;
+    }
+  })
+};
 
 
 muteButton.addEventListener("click", muteSong);
