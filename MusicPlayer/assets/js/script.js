@@ -121,7 +121,6 @@ const playSong = (id) => {
   setPlayerDisplay();
   setPlayButtonAccessibleText();
   audio.play();
-  audio.currentTime = 58;
 }
 
 // Function used to display the songs in the UI
@@ -280,7 +279,7 @@ audio.addEventListener("timeupdate", (event) => {
     currentSongTimeInSeconds = "0" + currentSongTimeInSeconds;
   }
 
-  songCurrentTime.innerHTML = `${currentSongTimeInMinutes} : ${currentSongTimeInSeconds}`;
+  songCurrentTime.innerHTML = `${currentSongTimeInMinutes} : ${currentSongTimeInSeconds} - ${userData.currentSong.duration}`;
 });
 
 
