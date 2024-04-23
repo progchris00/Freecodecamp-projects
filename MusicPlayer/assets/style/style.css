@@ -390,7 +390,13 @@ button:focus,
   background-color: var(--primary-color);
 }
 
-#song-current-time {
+.song-current-total-duration {
+  display: flex;
+  justify-content: space-between;
+}
+
+#song-current-time,
+#song-total-time {
   margin: 0;
 }
 

@@ -5,7 +5,9 @@ const pauseButton = document.getElementById("pause");
 const nextButton = document.getElementById("next");
 const shuffleButton = document.getElementById("shuffle");
 const muteButton = document.getElementById("mute");
+const songCurrentTotalTime = document.querySelector(".song-current-total-duration");
 const songCurrentTime = document.getElementById("song-current-time");
+const songTotalTime = document.getElementById("song-total-time");
 
 // All sorting button types
 const sortButtonTypes = document.querySelectorAll(".sort-btn-type")
@@ -280,10 +282,11 @@ audio.addEventListener("timeupdate", (event) => {
   }
 
   if (userData.currentSong === null) {
-    songCurrentTime.classList.add("hide");
+    songCurrentTotalTime.classList.add("hide");
   } else {
-    songCurrentTime.classList.remove("hide");
-    songCurrentTime.innerHTML = `${currentSongTimeInMinutes}:${currentSongTimeInSeconds} - ${userData.currentSong.duration}`;
+    songCurrentTotalTime.classList.remove("hide");
+    songCurrentTime.innerHTML = `${currentSongTimeInMinutes}:${currentSongTimeInSeconds}`;
+    songTotalTime.innerHTML = `${userData.currentSong.duration}`;
   }
 });
 
