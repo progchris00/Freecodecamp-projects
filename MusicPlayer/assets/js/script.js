@@ -15,6 +15,8 @@ const sortButtonTypes = document.querySelectorAll(".sort-btn-type")
 const sortButton = document.getElementById("sort-btn");
 const sortButtonsContainer = document.getElementById("sort-types");
 
+const sliderCurrentTime = document.querySelector(".slider-current-time");
+
 const allSongs = [
     {
         id: 0,
@@ -273,6 +275,10 @@ audio.addEventListener("timeupdate", (event) => {
   let currentSongTimeInMinutes = Math.floor(audio.currentTime / 60);
   let currentSongTimeInSeconds = Math.floor(audio.currentTime - currentSongTimeInMinutes * 60);
 
+  let durationMinutes = Number(userData.currentSong.duration.split(":")[0]) * 60;
+  let durationSeconds = Number(userData.currentSong.duration.split(":")[1])
+  let durationCurrentTime = (audio.currentTime / (durationMinutes + durationSeconds)) * 100;
+
   if (currentSongTimeInMinutes < 10) {
     currentSongTimeInMinutes = "0" + currentSongTimeInMinutes;
   }
@@ -287,6 +293,7 @@ audio.addEventListener("timeupdate", (event) => {
     songCurrentTotalTime.classList.remove("hide");
     songCurrentTime.innerHTML = `${currentSongTimeInMinutes}:${currentSongTimeInSeconds}`;
     songTotalTime.innerHTML = `${userData.currentSong.duration}`;
+    sliderCurrentTime.style.width =  `${durationCurrentTime}%`;
   }
 });
 
