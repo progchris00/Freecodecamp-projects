@@ -275,6 +275,10 @@ audio.addEventListener("timeupdate", (event) => {
   let currentSongTimeInMinutes = Math.floor(audio.currentTime / 60);
   let currentSongTimeInSeconds = Math.floor(audio.currentTime - currentSongTimeInMinutes * 60);
 
+  let durationMinutes = Number(userData.currentSong?.duration.split(":")[0]) * 60;
+  let durationSeconds = Number(userData.currentSong?.duration.split(":")[1])
+  let durationCurrentTime = (audio.currentTime / (durationMinutes + durationSeconds)) * 100;
+
   if (currentSongTimeInMinutes < 10) {
     currentSongTimeInMinutes = "0" + currentSongTimeInMinutes;
   }
@@ -286,10 +290,6 @@ audio.addEventListener("timeupdate", (event) => {
   if (userData.currentSong === null) {
     songCurrentTotalTime.classList.add("hide");
   } else {
-    let durationMinutes = Number(userData.currentSong.duration.split(":")[0]) * 60;
-    let durationSeconds = Number(userData.currentSong.duration.split(":")[1])
-    let durationCurrentTime = (audio.currentTime / (durationMinutes + durationSeconds)) * 100;
-
     songCurrentTotalTime.classList.remove("hide");
     songCurrentTime.innerHTML = `${currentSongTimeInMinutes}:${currentSongTimeInSeconds}`;
     songTotalTime.innerHTML = `${userData.currentSong.duration}`;
