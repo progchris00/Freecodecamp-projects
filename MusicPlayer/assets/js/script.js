@@ -288,7 +288,8 @@ audio.addEventListener("timeupdate", (event) => {
   if (currentSongTimeInSeconds < 10) {
     currentSongTimeInSeconds = "0" + currentSongTimeInSeconds;
   }
-
+  
+  // To do: change the if else statement to ternary operator like on line 241
   if (userData.currentSong === null) {
     songCurrentTotalTime.classList.add("hide");
     sliderTotalTime.classList.remove("block");
