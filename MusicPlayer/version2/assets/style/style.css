@@ -109,3 +109,14 @@ body {
   height: 7px;
   border-radius: 6px;
 }
+
+button {
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.player svg {
+  fill: var(--primary-color);
+}
