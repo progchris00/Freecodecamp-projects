@@ -32,15 +32,6 @@
               <p id="player-song-title">Test Song Title</p>
               <p id="player-song-artist">Test Song Artist</p>
             </div>
-            <div class="song-current-total-duration">
-              <p id="song-current-time"></p>
-              <p id="song-total-time"></p>
-            </div>
-            <div class="slider">
-              <div class="slider-total-time">
-                <div class="slider-current-time"></div>
-              </div>
-            </div>
             <div class="player-buttons">
               <button id="previous" class="previous" aria-label="Previous">
                 <svg
@@ -94,32 +85,6 @@
                 </svg>
               </button>
               <button id="mute" class="mute" aria-label="Mute">Mute</button>
-              <div class="dropdown-menu">
-                <button class="sort-btn" id="sort-btn">Sort</button>
-                <div class="sort-types" id="sort-types">
-                  <button
-                    class="sort-btn-type"
-                    id="sort-by-title"
-                    value="title"
-                  >
-                    Title
-                  </button>
-                  <button
-                    class="sort-btn-type"
-                    id="sort-by-duration"
-                    value="duration"
-                  >
-                    Duration
-                  </button>
-                  <button
-                    class="sort-btn-type"
-                    id="sort-by-artist"
-                    value="artist"
-                  >
-                    Artist
-                  </button>
-                </div>
-              </div>
               <button id="shuffle" class="shuffle" aria-label="Shuffle">
                 <svg
                   width="17"
@@ -136,6 +101,15 @@
                 </svg>
               </button>
             </div>
+            <div class="song-current-total-time">
+              <p id="song-current-time">0:00</p>
+              <div class="slider">
+                <div class="slider-total-time">
+                  <div class="slider-current-time"></div>
+                </div>
+              </div>
+              <p id="song-total-time">0:00</p>
+            </div>
           </div>
         </div>
       </div>
@@ -149,6 +123,24 @@
           <div class="parallel-lines">
             <div></div>
             <div></div>
+          </div>
+        </div>
+        <div class="dropdown-menu">
+          <button class="sort-btn" id="sort-btn">Sort</button>
+          <div class="sort-types" id="sort-types">
+            <button class="sort-btn-type" id="sort-by-title" value="title">
+              Title
+            </button>
+            <button
+              class="sort-btn-type"
+              id="sort-by-duration"
+              value="duration"
+            >
+              Duration
+            </button>
+            <button class="sort-btn-type" id="sort-by-artist" value="artist">
+              Artist
+            </button>
           </div>
         </div>
         <ul id="playlist-songs"></ul>
