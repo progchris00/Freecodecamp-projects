@@ -78,3 +78,34 @@ body {
   margin: 0;
   text-align: center;
 }
+
+.buttons-and-slider {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  row-gap: 5px;
+}
+
+.player-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.song-current-total-time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.song-current-total-time p {
+  margin: 0;
+}
+
+.slider-total-time {
+  display: block;
+  background-color: var(--border-color);
+  width: 350px;
+  height: 7px;
+  border-radius: 6px;
+}
