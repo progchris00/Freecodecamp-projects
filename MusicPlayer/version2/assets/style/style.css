@@ -32,25 +32,49 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 }
 
 .player {
+  display: flex;
+  justify-content: center;
   border: 1px solid var(--border-color);
   background-color: var(--background-color);
   width: 800px;
-  height: 200px;
-  border-radius: 25px;
+  height: 250px;
+  border-radius: 20px;
 }
 
 .player-content {
-  height: 200px;
+  height: 250px;
+  width: 750px;
   display: flex;
-  justify-content: center;
   align-items: center;
   column-gap: 20px;
 }
 
 #player-album-art img {
-  width: 150px;
+  width: 200px;
   display: block;
+}
+
+.player-display {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 200px;
+}
+
+#player-song-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+#player-song-artist {
+  margin: 0;
+  text-align: center;
 }
