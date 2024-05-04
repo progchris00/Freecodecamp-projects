@@ -54,6 +54,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   height: auto;
 }
 
@@ -164,8 +165,39 @@ ul {
   margin: 0;
 }
 
+.playlist-song {
+  display: flex;
+  list-style-type: none;
+  height: 55px;
+}
+
+#playlist-songs {
+  width: 90%;
+  padding: 8px 9px;
+}
+
 .playlist-song-info {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  padding: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.playlist-song-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  width: 400px;
+  color: var(--primary-color);
+}
+
+.song-title-artist {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 0.825rem;
+}
+
+.playlist-song-duration {
+  font-size: 1rem;
 }

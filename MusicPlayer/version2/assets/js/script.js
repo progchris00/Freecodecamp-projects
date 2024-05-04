@@ -137,11 +137,12 @@ const renderSongs = (array) => {
   const songsHTML = array.map((songs) => {
     return `<li id="song-${songs.id}" class="playlist-song">
       <button class="playlist-song-info">
-        <span class="playlist-song-title">${songs.title}</span>
-        <span class="playlist-song-artist">${songs.artist}</span>
+        <div class="song-title-artist">
+          <span class="playlist-song-title">${songs.title}</span>
+          <span class="playlist-song-artist">${songs.artist}</span>
+        </div>
         <span class="playlist-song-duration">${songs.duration}</span>
       </button>
-      <button class="playlist-song-delete"></button>
     </li>`;
   }).join("") // the return value is array so using join will turn it to list and remove the comma
   playlistSongs.innerHTML = songsHTML;
