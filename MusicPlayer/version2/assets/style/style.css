@@ -50,14 +50,6 @@ body {
   height: 250px;
 }
 
-.playlist {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: auto;
-}
-
 .player-content {
   height: 250px;
   width: 750px;
@@ -135,10 +127,16 @@ button {
 }
 
 /* Playlist */
+.playlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
 
 /* Dropdown menu */
 .dropdown-menu {
-  align-self: flex-end;
+  width: 90%;
 }
 .sort-types button {
   width: 100%;
@@ -187,7 +185,6 @@ ul {
 .playlist-song-title {
   font-size: 1.2rem;
   font-weight: 600;
-  width: 400px;
   color: var(--primary-color);
 }
 
@@ -196,6 +193,7 @@ ul {
   flex-direction: column;
   text-align: left;
   font-size: 0.825rem;
+  width: 400px;
 }
 
 .playlist-song-duration {
