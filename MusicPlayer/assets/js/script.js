@@ -346,3 +346,7 @@ shuffleButton.addEventListener("click", shuffle);
 
 // By default, load the songs based on the original position.
 renderSongs(userData?.songs);
+
+document.addEventListener("click", function(event) {
+  console.log(event.target);
+});
