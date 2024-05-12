@@ -7,6 +7,8 @@ const muteButton = document.getElementById("mute");
 const songCurrentTotalTime = document.querySelector(".song-current-total-time");
 const songCurrentTime = document.getElementById("song-current-time");
 const songTotalTime = document.getElementById("song-total-time");
+const playingButton = document.getElementById("play-button");
+const pauseButton = document.getElementById("pause-button");
 
 // All sorting button types
 const sortButtonTypes = document.querySelectorAll(".sort-btn-type")
@@ -198,11 +200,15 @@ const getCurrentSongIndex = () => userData.songs.indexOf(userData.currentSong);
 
 playButton.addEventListener("click", () => {
   if (playButton.classList.contains("playing")) {
+    playingButton.classList.add("hide");
+    pauseButton.classList.remove("hide");
     userData.songCurrentTime = audio.currentTime;
   
     playButton.classList.remove("playing");
     audio.pause()
   } else {
+    playingButton.classList.remove("hide");
+    pauseButton.classList.add("hide");
     if (userData?.currentSong === null) {
       playSong(userData?.songs[0].id);
     } else {

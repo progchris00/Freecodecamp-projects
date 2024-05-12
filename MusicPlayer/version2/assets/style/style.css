@@ -95,6 +95,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 40px;
 }
 
 .song-current-total-time {
@@ -120,6 +121,10 @@ button {
   border: none;
   color: var(--primary-color);
   cursor: pointer;
+}
+
+.play-pause {
+  width: 54px;
 }
 
 .player svg {
@@ -212,4 +217,8 @@ ul {
   background-color: var(--primary-color);
   height: 100%;
   border-radius: 6px;
+}
+
+.hide {
+  display: none;
 }
