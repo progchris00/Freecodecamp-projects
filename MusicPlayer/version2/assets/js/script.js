@@ -1,7 +1,6 @@
 const playlistSongs = document.getElementById("playlist-songs");
-const playButton = document.getElementById("play");
+const playButton = document.getElementById("play-pause");
 const previousButton = document.getElementById("previous");
-const pauseButton = document.getElementById("pause");
 const nextButton = document.getElementById("next");
 const shuffleButton = document.getElementById("shuffle");
 const muteButton = document.getElementById("mute");
@@ -170,13 +169,6 @@ const sortPlaylist = (criteria) => {
   return userData?.songs
 };
 
-const pauseSong = () => {
-  userData.songCurrentTime = audio.currentTime;
-
-  playButton.classList.remove("playing");
-  audio.pause()
-}
-
 const playNextSong = () => {
   if (userData?.currentSong === null) {
     playSong(userData?.songs[0].id);
@@ -204,13 +196,21 @@ const playPreviousSong = () => {
 // This is useful when the playlist is shuffled.
 const getCurrentSongIndex = () => userData.songs.indexOf(userData.currentSong);
 
-// playButton.addEventListener("click", () => {
-//   if (userData?.currentSong === null) {
-//     playSong(userData?.songs[0].id);
-//   } else {
-//     playSong(userData?.currentSong.id);
-//   }
-// });
+playButton.addEventListener("click", () => {
+  if (playButton.classList.contains("playing")) {
+    userData.songCurrentTime = audio.currentTime;
+  
+    playButton.classList.remove("playing");
+    audio.pause()
+  } else {
+    if (userData?.currentSong === null) {
+      playSong(userData?.songs[0].id);
+    } else {
+      playSong(userData?.currentSong.id);
+    }
+  }
+
+});
 
 const highlightCurrentSong = () => {
   const playlistSongElements = document.querySelectorAll(".playlist-song");
@@ -333,7 +333,6 @@ document.addEventListener("click", e => {
   }
 })
 
-// pauseButton.addEventListener("click", pauseSong);
 nextButton.addEventListener("click", playNextSong);
 previousButton.addEventListener("click", playPreviousSong);
 shuffleButton.addEventListener("click", shuffle);
