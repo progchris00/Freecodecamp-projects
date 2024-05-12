@@ -4,7 +4,7 @@ const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
 const shuffleButton = document.getElementById("shuffle");
 const muteButton = document.getElementById("mute");
-const songCurrentTotalTime = document.querySelector(".song-current-total-duration");
+const songCurrentTotalTime = document.querySelector(".song-current-total-time");
 const songCurrentTime = document.getElementById("song-current-time");
 const songTotalTime = document.getElementById("song-total-time");
 
