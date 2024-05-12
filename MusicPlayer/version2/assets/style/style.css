@@ -207,3 +207,9 @@ ul {
 .playlist-song-duration {
   font-size: 1rem;
 }
+
+.slider-current-time {
+  background-color: var(--primary-color);
+  height: 100%;
+  border-radius: 6px;
+}
