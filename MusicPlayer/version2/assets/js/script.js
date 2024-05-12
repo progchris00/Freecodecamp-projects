@@ -200,15 +200,15 @@ const getCurrentSongIndex = () => userData.songs.indexOf(userData.currentSong);
 
 playButton.addEventListener("click", () => {
   if (playButton.classList.contains("playing")) {
-    playingButton.classList.add("hide");
-    pauseButton.classList.remove("hide");
+    playingButton.classList.remove("hide");
+    pauseButton.classList.add("hide");
     userData.songCurrentTime = audio.currentTime;
   
     playButton.classList.remove("playing");
     audio.pause()
   } else {
-    playingButton.classList.remove("hide");
-    pauseButton.classList.add("hide");
+    playingButton.classList.add("hide");
+    pauseButton.classList.remove("hide");
     if (userData?.currentSong === null) {
       playSong(userData?.songs[0].id);
     } else {
